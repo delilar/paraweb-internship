@@ -1,0 +1,42 @@
+@import "./shared";
+
+html {
+  --path-to-user-icon: url("../../../public/icons/user.svg");
+}
+
+.user-icon-button {
+  @include button-base;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 0.8rem;
+  
+  &--mobile {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 0.6rem;
+    
+    .user-icon-button__icon {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+  
+  &__icon {
+    @include icon-base;
+    width: 1.6rem;
+    height: 1.6rem;
+    background-image: var(--path-to-user-icon);
+  }
+  
+  &--filled {
+    background-color: $ultramarine-default;
+    
+    @include hover-state($ultramarine-dark);
+    @include active-state($ultramarine-light);
+  }
+  
+  &--disabled {
+    @include disabled-state;
+  }
+}

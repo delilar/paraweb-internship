@@ -1,0 +1,56 @@
+@import "./shared";
+
+html {
+  --path-to-arrow-up-right-icon: url("../../../public/icons/arrow-up-right.svg");
+}
+
+.arrow-button {
+  @include button-base;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.8rem;
+  background-color: #F6F6F6;
+  gap: 0.8rem;
+  
+  &--mobile {
+    padding: 0.6rem 1rem;
+    border-radius: 0.6rem;
+    
+    .arrow-button__icon {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+  
+  &__icon {
+    @include icon-base;
+    width: 1.6rem;
+    height: 1.6rem;
+    background-image: var(--path-to-arrow-up-right-icon);
+  }
+  
+  &__text {
+    @extend .text-button-small;
+    color: $text-color;
+  }
+  
+  @include hover-state(#EBEBEB);
+  
+  &--filled {
+    background-color: $ultramarine-default;
+    
+    .arrow-button__text {
+      color: white;
+    }
+    
+    @include hover-state($ultramarine-dark);
+    @include active-state($ultramarine-light);
+  }
+  
+  &--disabled {
+    @include disabled-state;
+    
+    .arrow-button__text {
+      color: $disabled-text;
+    }
+  }
+}

@@ -1,0 +1,176 @@
+@import "./shared";
+
+.button {
+  @include button-base;
+  padding: 1.2rem 1.6rem;
+  border-radius: 1.2rem;
+  gap: 1.2rem;
+
+  &--mobile {
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.6rem;
+    
+    .button__icon, .button__add-icon {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+  
+  &__icon, &__add-icon {
+    width: 2rem;
+    height: 2rem;
+    
+    path {
+      stroke: currentColor;
+      stroke-width: 0.15rem;
+    }
+  }
+  
+  &__text {
+    @extend .text-button;
+    white-space: nowrap;
+  }
+  
+  // Filled button
+  &--filled {
+    background-color: $ultramarine-default;
+    color: $card-color;
+    
+    .button__icon path, .button__add-icon path {
+      stroke: $card-color;
+    }
+    
+    @include hover-state($ultramarine-dark);
+    @include active-state($ultramarine-light);
+    
+    &.button_disabled {
+      @include disabled-state;
+      
+      .button__icon path, .button__add-icon path {
+        stroke: $disabled-text;
+      }
+    }
+  }
+  
+  // Outlined button
+  &--outlined {
+    background-color: transparent;
+    border: 1px solid $ultramarine-default;
+    color: $ultramarine-default;
+    
+    .button__icon path, .button__add-icon path {
+      stroke: $ultramarine-default;
+    }
+    
+    &:hover {
+      background-color: rgba(92, 65, 255, 0.05);
+      border-color: $ultramarine-dark;
+      color: $ultramarine-dark;
+      
+      .button__icon path, .button__add-icon path {
+        stroke: $ultramarine-dark;
+      }
+    }
+    
+    &:active, &.pressed {
+      background-color: rgba(92, 65, 255, 0.1);
+      border-color: $ultramarine-light;
+      color: $ultramarine-light;
+      
+      .button__icon path, .button__add-icon path {
+        stroke: $ultramarine-light;
+      }
+    }
+    
+    &.button_disabled {
+      background-color: transparent;
+      border: 1px solid $disabled-bg;
+      color: $disabled-text;
+      cursor: not-allowed;
+      pointer-events: none;
+      
+      .button__icon path, .button__add-icon path {
+        stroke: $disabled-text;
+      }
+    }
+  }
+
+  // On contrast background button
+  &--on-contrast-background {
+    background-color: $card-color;
+    color: $text-color;
+
+    .button__icon, .button__add-icon {
+      path {
+        stroke: $ultramarine-default;
+      }
+    }
+
+    &:hover {
+      background-color: $card-color;
+      color: $text-color;
+      
+      .button__icon path, .button__add-icon path {
+        stroke: $ultramarine-dark;
+      }
+    }
+    
+    &:active, &.pressed {
+      background-color: $card-color;
+      color: $text-color;
+      
+      .button__icon path, .button__add-icon path {
+        stroke: $ultramarine-dark;
+      }
+    }
+
+    &.button_disabled {
+      background-color: var(--text-contrast-seconsary-color);
+      color: var(--text-contrast-blind-color);
+      cursor: not-allowed;
+      pointer-events: none;
+      
+      .button__icon path, .button__add-icon path {
+        stroke: var(--text-contrast-blind-color);
+      }
+    }
+  }
+  
+  // Text button
+  &--text {
+    background-color: transparent;
+    color: $ultramarine-default;
+    padding: 0.8rem;
+    
+    .button__icon path, .button__add-icon path {
+      stroke: $ultramarine-default;
+    }
+    
+    &:hover {
+      background-color: rgba(92, 65, 255, 0.05);
+      color: $ultramarine-dark;
+      
+      .button__icon path, .button__add-icon path {
+        stroke: $ultramarine-dark;
+      }
+    }
+    
+    &:active, &.pressed {
+      background-color: rgba(92, 65, 255, 0.1);
+      color: $ultramarine-light;
+      
+      .button__icon path, .button__add-icon path {
+        stroke: $ultramarine-light;
+      }
+    }
+    
+    &.button_disabled {
+      @include disabled-state;
+      background-color: transparent;
+      
+      .button__icon path, .button__add-icon path {
+        stroke: $disabled-text;
+      }
+    }
+  }
+}

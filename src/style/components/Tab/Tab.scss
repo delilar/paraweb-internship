@@ -1,0 +1,72 @@
+@import '../../global/colors.scss';
+@import '../../global/typography.scss';
+@import '../../utils/typography.scss';
+
+.tab {
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    font-family: var(--main-font);
+    color: var(--text-secondary-color);
+
+    .count-wrapper {
+        text-align: center;
+        background-color: var(--gray-color-5);
+        border-radius: 1.2rem;
+        margin-left: 1.2rem;
+
+        .count {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &:active {
+        .label {
+            color: var(--text-color);
+        }
+
+        .count-wrapper {
+            .count {
+                color: var(--text-contrast-color);
+            }
+
+            background-color: var(--ultramarine-default-color);
+        }
+
+        border-bottom: 0.1rem solid var(--ultramarine-default-color);
+    }
+
+    @include from-mobile {
+        @include text-button;
+
+        padding-bottom: 1.6rem;
+
+        .count-wrapper {
+            margin-left: 0.8rem;
+
+            .count {
+                width: 3.6rem;
+                height: 3.6rem;
+                margin: 0.2rem;
+            }
+        }
+    }
+
+    @include mobile {
+        @include text-button-small;
+
+        padding-bottom: 1.2rem;
+
+        .count-wrapper {
+            margin-left: 1.2rem;
+
+            .count {
+                width: 2.4rem;
+                height: 2.0rem;
+                margin: 0.4rem;
+            }
+        }
+    }
+}

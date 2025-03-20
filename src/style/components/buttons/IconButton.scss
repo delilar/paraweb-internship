@@ -1,0 +1,69 @@
+@import "./shared";
+
+html {
+  --path-to-pencil-icon: url("../../../../public/icons/pencil.svg");
+}
+
+.icon-button {
+  @include button-base;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 0.8rem;
+  
+  &--mobile {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 0.6rem;
+    
+    .icon-button__icon {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+  
+  &__icon {
+    @include icon-base;
+    width: 1.6rem;
+    height: 1.6rem;
+    background-image: var(--path-to-pencil-icon);
+  }
+
+  &--filled {
+    background-color: $ultramarine-default;
+    
+    @include hover-state($ultramarine-dark);
+    @include active-state($ultramarine-light);
+  }
+  
+  &--outlined {
+    background-color: transparent;
+    border: 1px solid $ultramarine-default;
+    
+    &:hover {
+      background-color: rgba(92, 65, 255, 0.05);
+      border-color: $ultramarine-dark;
+    }
+    
+    &:active, &.pressed {
+      background-color: rgba(92, 65, 255, 0.1);
+      border-color: $ultramarine-light;
+    }
+  }
+  
+  &--text {
+    background-color: transparent;
+    
+    &:hover {
+      background-color: rgba(92, 65, 255, 0.05);
+    }
+    
+    &:active, &.pressed {
+      background-color: rgba(92, 65, 255, 0.1);
+    }
+  }
+  
+  &--disabled {
+    @include disabled-state;
+  }
+}

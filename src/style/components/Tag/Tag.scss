@@ -1,0 +1,81 @@
+@import "../../global/colors.scss";
+@import "../../global/typography.scss";
+
+.tag {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.8rem;
+    font-family: var(--secondary-font);
+
+    &.gray {
+        color: var(--text-secondary-color);
+        background-color: var(--gray-color-3);
+
+        &:hover {
+            background-color: var(--gray-color-4)
+        }
+    }
+
+    &.primary {
+        @extend .text-tag;
+    
+        &.cyan {
+            color: var(--cyan-default-color);
+            background-color: var(--cyan-light-color);
+        }
+
+        &.purple {
+            color: var(--purple-default-color);
+            background-color: var(--purple-light-color);
+        }
+
+        &.green {
+            color: var(--electric-green-default-color);
+            background-color: var(--electric-green-light-color-2);
+        }
+
+        &.red {
+            color: var(--suai-red-default-color);
+            background-color: var(--suai-red-light-2-color);
+        }
+
+        &.blue {
+            color: var(--suai-blue-default-color);
+            background-color: var(--suai-blue-light-color);
+        }
+    }
+
+    &.deletable {
+        @extend .text-body-small;
+
+        .tag__main-text {
+            color: var(--text-color);
+        }
+
+        .tag__secondary-text {
+            margin: 0 0.8rem;
+            color: var(--text-secondary-color);
+        }
+
+        path {
+            stroke: var(--text-secondary-color);
+            stroke-width: 0.25rem;
+        }
+
+        @include from-mobile {
+            svg {
+                width: 1.6rem; 
+            }
+        }
+
+        @include mobile {
+            svg {
+                width: 1.2rem; 
+            }
+        }
+    }
+
+
+}
