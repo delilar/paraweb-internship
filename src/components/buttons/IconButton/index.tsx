@@ -1,25 +1,26 @@
-
-import '../../style/components/buttons/IconButton.scss';
+import classNames from 'classnames';
 import { IconButtonProps } from './types';
+import "@style/components/buttons/IconButton.scss";
 
 const IconButton: React.FC<IconButtonProps> = ({
   variant = 'filled',
   disabled = false,
-  isMobile = false,
   onClick,
-  className = ''
+  className = '',
+  icon: Icon
 }) => {
-  const buttonClasses = [
+  const buttonClasses = classNames(
     'icon-button',
-    isMobile ? 'icon-button--mobile' : '',
-    `icon-button--${variant}`,
-    disabled ? 'icon-button--disabled' : '',
+    {
+      [`icon-button--${variant}`]: variant,
+      'icon-button--disabled': disabled
+    },
     className
-  ].filter(Boolean).join(' ');
+  )
 
   return (
     <button className={buttonClasses} disabled={disabled} onClick={onClick}>
-      <span className="icon-button__icon"></span>
+      {Icon}
     </button>
   );
 };

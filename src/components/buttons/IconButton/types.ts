@@ -1,8 +1,9 @@
+import { ReactNode } from "react";
+
 export interface IconButtonProps {
-    variant?: 'filled' | 'outlined' | 'text';
-    disabled?: boolean;
-    isMobile?: boolean;
-    onClick?: () => void;
-    className?: string;
-  }
-  
+  variant?: 'filled' | 'outlined' | 'hovered' | 'contrast-hovered' | 'contrast-filled';
+  disabled?: boolean;
+  onClick?: () => void;
+  className?: string;
+  icon?: ReactNode;
+}

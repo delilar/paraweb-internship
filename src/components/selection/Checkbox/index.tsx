@@ -1,10 +1,13 @@
 import { FC, useState } from "react";
 import { CheckboxProps } from "./types";
-import "../../../style/components/selection/Checkbox.scss";
+import "@style/components/selection/Checkbox.scss";
+import classNames from "classnames";
 
-const Checkbox: FC<CheckboxProps> = ({ label, disabled = false }) => {
+const Checkbox: FC<CheckboxProps> = ({ label, disabled = false, checked=false, className }) => {
     const id = `checkbox-${label}`; // Уникальный id
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(checked);
+
+    const checkboxClassName = classNames("checkbox", className);
 
     const handleChange = () => {
         if (!disabled) {
@@ -13,7 +16,7 @@ const Checkbox: FC<CheckboxProps> = ({ label, disabled = false }) => {
     };
 
     return (
-        <div className="checkbox">
+        <div className={checkboxClassName}>
             <input
                 type="checkbox"
                 className="checkbox__input"

@@ -1,0 +1,96 @@
+@use "@style/global/index.scss" as global;
+
+.partner-card {
+    display: inline-flex;
+    flex-direction: column;
+    font-family: var(--secondary-font);
+    background-color: var(--card-color);
+    -webkit-tap-highlight-color: transparent;
+
+    hr {
+        border: solid 0.05rem var(--divider-color);
+    }
+
+    &__link {
+        @extend .text-body-small-bold;
+        color: var(--text-secondary-color);
+        text-decoration: none;
+
+        &:visited {
+            color: var(--text-secondary-color);
+        }
+    }
+
+    &__heading {
+        row-gap: 0.8rem;
+        padding-bottom: 0.4rem;
+    }
+
+    &__title {
+        @extend .text-h4;
+        font-family: var(--main-font);
+        color: var(--text-color);
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+            color: var(--ultramarine-default-color);
+        }
+    }
+
+    &__main {
+        display: inline-flex;
+        flex-direction: column;
+
+        &> * {
+            display: inline-flex;
+            flex-direction: column;
+            row-gap: 0.4rem;
+        }
+
+        small {
+            @extend .text-caption;
+            color: var(--text-secondary-color);
+        }
+
+        p {
+            @extend .text-body-small-bold;
+            color: var(--text-color);
+        }
+    }
+    
+    @include global.from-mobile {
+        max-width: 36rem;
+        row-gap: 2rem;
+        border-radius: 3.2rem;
+        padding: 2.4rem;
+
+        &__image {
+            width: 8rem;
+            height: 8rem;
+        }
+
+        &__main {
+            row-gap: 2rem;
+        }
+    }
+
+    @include global.mobile {
+        max-width: 35rem;
+        row-gap: 1.6rem;
+        border-radius: 2.4rem;
+        padding: 2rem;
+
+        &__image {
+            width: 6.4rem;
+            height: 6.4rem;
+        }
+
+        &__main {
+            row-gap: 1.2rem;
+        }
+    }
+
+    &__image {
+        border-radius: 1.2rem;
+    }
+}

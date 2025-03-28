@@ -1,12 +1,13 @@
-@import "../../global/colors.scss";
-@import "../../global/typography.scss";
+@use "@style/global/index.scss" as global;
 
-.breadcrumb { // <ol>
+.breadcrumb {
     display: inline-flex;
     @extend .text-body-small;
     font-family: var(--secondary-font);
     align-items: center;
     color: var(--text-color);
+    width: max-content;
+    -webkit-tap-highlight-color: transparent;
 
     li {
         display: flex;
@@ -21,13 +22,13 @@
             display: inline-block;
         }
 
-        @include from-mobile {
+        @include global.from-mobile {
             &::before {
                 margin: 0 1.8rem;
             }
         }
 
-        @include mobile {
+        @include global.mobile {
             &::before {
                 margin: 0 1.25rem;
             }

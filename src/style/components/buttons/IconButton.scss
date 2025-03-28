@@ -1,69 +1,213 @@
-@import "./shared";
+@use "@style/global/index.scss" as global;
 
-html {
-  --path-to-pencil-icon: url("../../../../public/icons/pencil.svg");
-}
 
 .icon-button {
-  @include button-base;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: 0.8rem;
-  
-  &--mobile {
-    width: 2.8rem;
-    height: 2.8rem;
-    border-radius: 0.6rem;
-    
-    .icon-button__icon {
-      width: 1.4rem;
-      height: 1.4rem;
-    }
-  }
-  
-  &__icon {
-    @include icon-base;
-    width: 1.6rem;
-    height: 1.6rem;
-    background-image: var(--path-to-pencil-icon);
+  border: none;
+  border-radius: 1.2rem;
+  transition: all 0.3s ease-in-out;
+  width: max-content;
+  -webkit-tap-highlight-color: transparent;
+
+  svg path {
+    stroke-width: 0.15rem;
+    stroke: var(--text-secondary-color);
+    transition: stroke 0.3s ease-in-out, 
+                fill 0.3s ease-in-out, 
+                stroke-width 0.3s ease-in-out;
   }
 
   &--filled {
-    background-color: $ultramarine-default;
+    padding: 0.4rem;
+    background-color: var(--gray-color-2);
+    border-radius: 0.8rem;
+
+    @include global.from-mobile {
+      &:hover {
+        svg path {
+          stroke: var(--ultramarine-default-color);
+        }
+      }
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
     
-    @include hover-state($ultramarine-dark);
-    @include active-state($ultramarine-light);
+    @include global.mobile {
+      svg {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+    }
+
+    &:active {
+      svg path {
+        stroke: var(--ultramarine-default-color);
+      }
+    }
+
+    &:disabled {
+      background-color: var(--gray-color-2);
+
+      svg path {
+        stroke: var(--text-blind-color);
+      }
+    }
   }
-  
+
   &--outlined {
+    padding: 0.4rem;
     background-color: transparent;
-    border: 1px solid $ultramarine-default;
-    
-    &:hover {
-      background-color: rgba(92, 65, 255, 0.05);
-      border-color: $ultramarine-dark;
+
+    @include global.from-mobile {
+      &:hover {
+        svg path {
+          stroke: var(--ultramarine-default-color);
+        }
+      }
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
     }
     
-    &:active, &.pressed {
-      background-color: rgba(92, 65, 255, 0.1);
-      border-color: $ultramarine-light;
+    @include global.mobile {
+      svg {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+    }
+
+    &:active {
+      svg path {
+        stroke: var(--ultramarine-default-color);
+      }
+    }
+
+    &:disabled {
+      svg path {
+        stroke: var(--text-blind-color);
+      }
     }
   }
-  
-  &--text {
+
+  &--hovered {
+    padding: 0.8rem;
     background-color: transparent;
     
-    &:hover {
-      background-color: rgba(92, 65, 255, 0.05);
+    @include global.from-mobile {
+      &:hover {
+        background-color: var(--gray-color-4);
+      }
+
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
     }
     
-    &:active, &.pressed {
-      background-color: rgba(92, 65, 255, 0.1);
+    @include global.mobile {
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &:active {
+      background-color: var(--gray-color-5);
+    }
+
+    &:disabled {
+      svg path {
+        stroke: var(--text-blind-color);
+      }
     }
   }
-  
-  &--disabled {
-    @include disabled-state;
+
+  &--contrast-hovered {
+    padding: 0.8rem;
+    color: var(--text-contrast-color);
+    background-color: transparent;
+
+    svg path {
+      stroke: var(--text-contrast-color);
+    }
+
+    @include global.from-mobile {
+      &:hover {
+        background-color: var(--text-contrast-blind-color);
+      }
+
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+
+      &:active {
+        background-color: #FFFFFF99;
+      }
+    }    
+    
+    @include global.mobile {
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      &:active {
+        background-color: var(--text-contrast-blind-color);
+      }
+    }
+
+    &:disabled {
+      svg path {
+        stroke: var(--text-contrast-blind-color);
+      }
+    }
+  }
+
+  &--contrast-filled {
+    padding: 0.8rem;
+    color: var(--text-contrast-color);
+    background-color: #FFFFFF33;
+
+    svg path {
+      stroke: var(--text-contrast-color);
+    }
+
+    @include global.from-mobile {
+      &:hover {
+        background-color: var(--ultramarine-default-color);
+      }
+
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+    }
+    
+    @include global.mobile {
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &:active {
+      background-color: #FFFFFF33;
+
+      svg path {
+        fill: var(--text-contrast-color);
+      }
+    }
+
+    &:disabled {
+      display: none;
+    }
   }
 }

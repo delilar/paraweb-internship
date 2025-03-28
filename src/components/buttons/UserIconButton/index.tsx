@@ -1,24 +1,20 @@
-import '../../style/components/buttons/UserIconButton.scss';
+import classNames from 'classnames';
+import '@style/components/buttons/UserIconButton.scss';
 import { UserIconButtonProps } from './types';
 
 const UserIconButton: React.FC<UserIconButtonProps> = ({
-  variant = 'filled',
-  disabled = false,
-  isMobile = false,
   onClick,
+  icon: Icon,
   className = ''
 }) => {
-  const buttonClasses = [
-    'user-icon-button',
-    isMobile ? 'user-icon-button--mobile' : '',
-    `user-icon-button--${variant}`,
-    disabled ? 'user-icon-button--disabled' : '',
-    className
-  ].filter(Boolean).join(' ');
+
+  const buttonClasses = classNames('user-icon-button', className);
 
   return (
-    <button className={buttonClasses} disabled={disabled} onClick={onClick}>
-      <span className="user-icon-button__icon"></span>
+    <button className={buttonClasses} onClick={onClick}>
+      <div className="icon-wrapper">
+        {Icon}
+      </div>
     </button>
   );
 };

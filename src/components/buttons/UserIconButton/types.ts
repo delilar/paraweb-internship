@@ -1,8 +1,8 @@
+import { ReactNode } from "react";
+
 export interface UserIconButtonProps {
-    variant?: 'filled' | 'outlined' | 'text';
-    disabled?: boolean;
-    isMobile?: boolean;
-    onClick?: () => void;
-    className?: string;
+    onClick?: () => void,
+    icon: ReactNode,
+    className?: string,
   }
   

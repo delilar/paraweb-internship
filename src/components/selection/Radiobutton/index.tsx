@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { RadiobuttonProps } from "./types";
-import "../../../style/components/selection/Radiobutton.scss"
+import "@style/components/selection/Radiobutton.scss"
 
 
 const Radiobutton: FC<RadiobuttonProps> = ({ name = "", label, disabled = false }) => {

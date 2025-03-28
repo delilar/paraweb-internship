@@ -1,6 +1,7 @@
-@import '../../global/colors.scss';
-@import '../../global/typography.scss';
-@import '../../utils/typography.scss';
+@use '@style/global/colors.scss';
+@use '@style/global/typography.scss';
+@use '@style/global/base.scss' as base;
+@use '@style/utils/typography.scss' as utils-typography;
 
 .tab {
     display: inline-flex;
@@ -8,6 +9,8 @@
     transition: all 0.2s ease-in-out;
     font-family: var(--main-font);
     color: var(--text-secondary-color);
+    width: max-content;
+    -webkit-tap-highlight-color: transparent;
 
     .count-wrapper {
         text-align: center;
@@ -38,8 +41,8 @@
         border-bottom: 0.1rem solid var(--ultramarine-default-color);
     }
 
-    @include from-mobile {
-        @include text-button;
+    @include base.from-mobile {
+        @include utils-typography.text-button;
 
         padding-bottom: 1.6rem;
 
@@ -54,8 +57,8 @@
         }
     }
 
-    @include mobile {
-        @include text-button-small;
+    @include base.mobile {
+        @include utils-typography.text-button-small;
 
         padding-bottom: 1.2rem;
 

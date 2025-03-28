@@ -1,10 +1,12 @@
+import { ReactNode } from 'react';
+
 export interface ButtonProps {
-  children: React.ReactNode;
-  variant?: 'filled' | 'outlined' | 'text';
+  children: ReactNode;
+  variant?: 'filled' | 'outlined' | 'text' | 'text-lower';
   disabled?: boolean;
-  icon?: boolean;
-  isMobile?: boolean;
   onContrastBackground?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: () => void;
   className?: string;
+  iconLeft?: string;
+  iconRight?: string;
 }

@@ -1,0 +1,119 @@
+@use "@style/global/index.scss" as global;
+
+.pagination {
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  width: max-content;
+  -webkit-tap-highlight-color: transparent;
+
+  @include global.from-mobile {
+    column-gap: 0.8rem;
+  }
+
+  @include global.mobile {
+    column-gap: 0.4rem;
+  }
+
+  &__item {
+    font-family: var(--secondary-font);
+    @extend .text-body-small;
+    border: none;
+    background-color: transparent;
+    border-radius: 1.2rem;
+
+    @include global.from-mobile {
+      &:not(.pagination__item--disabled):hover:not(.pagination__item--selected) {
+        background-color: var(--gray-color-4);
+      }
+
+      width: 4rem;
+      height: 4rem;
+    }
+
+    @include global.mobile {
+      width: 3.6rem;
+      height: 3.6rem;
+    }
+  }
+
+  &__ellipsis {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--secondary-font);
+    @extend .text-body-small;
+
+    @include global.from-mobile {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    @include global.mobile {
+      width: 3.6rem;
+      height: 3.6rem;
+    }
+  }
+
+  &__ellipsis--disabled {
+    color: var(--text-blind-color);    
+  }
+
+  &__item--selected {
+    background-color: var(--gray-color-5);
+  }
+
+  &__item--disabled {
+    color: var(--text-blind-color);
+    background-color: transparent !important;
+
+    svg path {
+      stroke: var(--text-blind-color);
+    }
+  }
+  
+  &__item--button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include global.from-mobile {
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+    }
+
+    @include global.mobile {
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    svg path {
+      stroke-width: 0.15rem;
+      stroke: var(--text-secondary-color);
+    }
+
+    @include global.from-mobile {
+      &:not(.pagination__item--disabled):hover {
+        background-color: var(--gray-color-4);
+      }
+  
+      &:not(.pagination__item--disabled):not(:hover) {
+        background-color: transparent;
+      }
+    }
+
+    &:not(.pagination__item--disabled):active {
+      background-color: var(--gray-color-5);
+    }
+  }
+  
+  &--disabled {
+    .pagination__item--selected {
+      background-color: transparent;
+    }
+  }
+}

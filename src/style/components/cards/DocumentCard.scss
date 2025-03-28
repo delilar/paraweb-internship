@@ -1,0 +1,85 @@
+@use "@style/global/index.scss" as global;
+
+.document-card {
+    display: inline-flex;
+    flex-direction: column;
+    background-color: var(--card-color);
+    transition: all 0.3s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    
+    @include global.from-mobile {
+        width: 74rem;
+        padding: 2.4rem;
+        border-radius: 3.2rem;
+        row-gap: 4rem;
+
+        svg {
+            width: 2rem;
+            height: 2rem;;
+        }
+    }
+
+    @include global.mobile {
+        width: 35rem;
+        padding: 2rem;
+        border-radius: 2.4rem;
+        row-gap: 3.2rem;
+
+        svg {
+            width: 1.6rem;
+            height: 1.6rem;;
+        }
+    }
+
+    &:hover {
+        background-color: var(--ultramarine-default-color);
+
+        .document-card__title {
+            color: var(--ultramarine-light-color-2) !important;
+        }
+
+        .document-card__bottom-container {
+            color: var(--text-contrast-color) !important;
+
+            svg path {
+                stroke: var(--text-contrast-color);
+            }
+        }
+    }
+
+    &:not(:hover) {
+        background-color: var(--card-color);
+
+        color: var(--text-color);
+
+        .document-card__doc-info {
+            --text-2-color: #80889D;
+            color: var(--text-2-color);
+        }
+
+        .document-card__bottom-container {
+            svg path {
+                stroke: var(--text-color);
+            }
+        }
+    }
+
+    &__bottom-container {
+        display: flex;
+        justify-content: space-between;
+
+        svg path {
+            stroke-width: 0.15rem;
+        }
+    }
+
+    &__title {
+        @extend .text-h4;
+        font-family: var(--main-font);
+    }
+
+    &__doc-info {
+        @extend .text-button-small;
+        font-family: var(--secondary-font);
+    }
+}

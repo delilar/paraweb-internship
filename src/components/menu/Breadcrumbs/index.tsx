@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { BreadcrumbsProps } from "./types";
+import "@style/components/menu/Breadcrumbs.scss";
 
 const Breadcrumbs: FC<BreadcrumbsProps> = ({ links }) => {
     return (
@@ -10,7 +11,7 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({ links }) => {
                         {link.href && !link.disabled ? (
                             <a href={link.href}>{link.label}</a>
                         ) : (
-                            <span>{link.label}</span> // Если href нет или disabled, показываем просто текст
+                            <span>{link.label}</span>
                         )}
                     </li>
                 ))}
