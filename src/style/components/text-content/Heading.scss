@@ -1,0 +1,52 @@
+@use "@style/main.scss" as *;
+@use "@style/components/text-content/shared.scss";
+
+.heading {
+    &__1 {
+        @include text-h1;
+
+        @include mobile {
+            margin: 4.8rem 0;
+        }
+    
+        @include from-mobile {
+            margin: 5.6rem 0;
+        }
+    }
+
+    &__2 {
+        @include text-h2;
+
+        @include mobile {
+            margin: 4.8rem 0;
+        }
+    
+        @include from-mobile {
+            margin: 5.6rem 0;
+        }
+    }
+    
+    &__3 {
+        @include text-h3;
+
+        @include mobile {
+            margin: 4rem 0;
+        }
+    
+        @include from-mobile {
+            margin: 4.8rem 0;
+        }
+    }
+
+    &__4 {
+        @include text-h4;
+
+        @include mobile {
+            margin: 4rem 0;
+        }
+    
+        @include from-mobile {
+            margin: 4.8rem 0;
+        }
+    }
+}

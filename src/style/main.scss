@@ -1,0 +1,8 @@
+@forward "./global/base.scss";
+@forward "./global/colors.scss";
+@forward "./global/typography.scss";
+
+@forward "./utils/index.scss";
+
+@use "./global/index.scss" as *;
+@use "./utils/index.scss" as *;
