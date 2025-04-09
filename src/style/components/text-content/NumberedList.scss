@@ -1,0 +1,30 @@
+@use "@style/main.scss" as *;
+@use "@style/components/text-content/shared.scss" as *;
+
+.numbered-list {
+    list-style-type: none;
+    display: inline-flex;
+    flex-direction: column;
+
+    @include from-mobile {
+        row-gap: 1.6rem;
+    }
+
+    @include mobile {
+        row-gap: 1.2rem;
+    }
+
+    &__item {
+        position: relative;
+        counter-increment: numbered-list;
+        padding-left: 3.7rem;
+
+        &::before {
+            position: absolute;
+            top: -0.2rem;
+            left: 0rem;;
+            content: counter(numbered-list) ".";
+            @include list-number;
+        }
+    }
+}

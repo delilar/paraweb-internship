@@ -131,3 +131,37 @@
     line-height: 1.4rem;
   }
 }
+
+@mixin list-number {
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+
+  @include media.mobile {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+}
+
+@mixin table-heading {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+
+  @include media.mobile {
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}
+
+@mixin table-body {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2rem;
+
+  @include media.mobile {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}

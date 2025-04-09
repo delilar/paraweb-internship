@@ -2,9 +2,12 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import PublicLayout from "./layouts/PublicLayout";
 import PrivateLayout from "./layouts/PrivateLayout";
 import Home from "./views/Home";
+import TextContent from "./views/TextContent";
 import Login from "./views/Login";
 import Admin from "./views/Admin";
 import NotFound from "./views/NotFound";
+
+import "@style/reset.scss";
 
 function App() {
   return (
@@ -13,6 +16,7 @@ function App() {
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/text-content" element={<TextContent />} />
         </Route>
 
         <Route element={<PrivateLayout />}>

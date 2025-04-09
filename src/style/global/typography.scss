@@ -54,3 +54,7 @@ html {
 .text-tag {
     @include type.text-tag;
 }
+
+.list-number {
+    @include type.list-number;
+}
