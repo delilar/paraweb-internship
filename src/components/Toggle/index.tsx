@@ -4,18 +4,12 @@ import "@style/components/Toggle/Toggle.scss";
 import CheckIcon from "@images/icons/check.svg"
 
 
-const Toggle: FC<ToggleProps> = ({ checked = false, disabled = false, onChange }) => {
+const Toggle: FC<ToggleProps> = ({ checked = false, disabled = false }) => {
     const [isChecked, setIsChecked] = useState(checked);
 
     const handleChecked = (): void => {
         if (!disabled) {
-            const newCheckedState = !isChecked;
-            setIsChecked(newCheckedState);
-            
-            // Вызываем переданный callback, если он существует
-            if (onChange) {
-                onChange(newCheckedState);
-            }
+            setIsChecked((prev) => !prev);
         }
     };
 

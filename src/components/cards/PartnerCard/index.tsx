@@ -11,10 +11,8 @@ const PartnerCard: FC<PartnerCardProps> = ({ imageUrl, title, link="#", linkText
                 {imageUrl ? <img src={imageUrl} alt="Communitie" /> : <ImagePlaceholder />}
             </div>
             <div className="partner-card__heading">
-                <a href={link} className="partner-card__link">
-                    <h4 className="partner-card__title">{title}</h4>
-                </a>
-                <a href={link} target="_blank" className="partner-card__link">{linkText}</a>
+                <h4 className="partner-card__title">{title}</h4>
+                <a href={`https://${link}`} target="_blank" className="partner-card__link">{linkText}</a>
             </div>
             <hr />
             <div className="partner-card__main">
@@ -24,11 +22,11 @@ const PartnerCard: FC<PartnerCardProps> = ({ imageUrl, title, link="#", linkText
                 </div>
                 <div className="partner-card__phone">
                     <small>Телефон</small>
-                    <a href={`tel:${phone}`}>{phone}</a>
+                    <p>{phone}</p>
                 </div>
                 <div className="partner-card__email">
                     <small>Электронная почта</small>
-                    <a href={`mailto:${email}`}>{email}</a>
+                    <p>{email}</p>
                 </div>
             </div>
             {socialLinks.length ? 

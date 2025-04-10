@@ -1,4 +1,4 @@
-@use "@style/main.scss" as *;
+@use "@style/global/base.scss" as base;
 
 .switcher {
     display: inline-flex;
@@ -26,7 +26,7 @@
 
       svg path {
         stroke: var(--text-secondary-color);
-        stroke-width: 1.5px;
+        stroke-width: 0.15rem;
         transition: stroke 0.3s ease;
       }
   
@@ -39,7 +39,7 @@
       }
     }
 
-    @include from-mobile {
+    @include base.from-mobile {
       &__button {
         width: 3.6rem;
         height: 3.6rem;
@@ -52,7 +52,7 @@
       }
     }
 
-    @include mobile {
+    @include base.mobile {
       &__button {
         width: 3.2rem;
         height: 3.2rem;

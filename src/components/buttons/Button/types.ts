@@ -1,4 +1,4 @@
-import { ReactNode, FC, SVGProps } from 'react';
+import { ReactNode } from 'react';
 
 export interface ButtonProps {
   children: ReactNode;
@@ -7,7 +7,6 @@ export interface ButtonProps {
   onContrastBackground?: boolean;
   onClick?: () => void;
   className?: string;
-  iconLeft?: string | FC<SVGProps<SVGSVGElement>>;
-  iconRight?: string | FC<SVGProps<SVGSVGElement>>;
-  href?: string;
+  iconLeft?: string;
+  iconRight?: string;
 }

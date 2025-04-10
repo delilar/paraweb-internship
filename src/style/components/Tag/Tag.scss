@@ -1,4 +1,6 @@
-@use "@style/main.scss" as *;
+@use "@style/global/colors.scss";
+@use "@style/global/typography.scss";
+@use "@style/global/base.scss" as base;
 
 .tag {
     display: inline-flex;
@@ -62,16 +64,16 @@
 
         path {
             stroke: var(--text-secondary-color);
-            stroke-width: 2.5px;
+            stroke-width: 0.25rem;
         }
 
-        @include from-mobile {
+        @include base.from-mobile {
             svg {
                 width: 1.6rem; 
             }
         }
 
-        @include mobile {
+        @include base.mobile {
             svg {
                 width: 1.2rem; 
             }

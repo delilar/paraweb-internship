@@ -1,4 +1,4 @@
-@use "@style/main.scss" as *;
+@use "@style/global/index.scss" as global;
 
 .social-button {
   display: inline-flex;
@@ -7,8 +7,8 @@
   border: none;
   background-color: transparent;
   column-gap: 1.2rem;
-  transition: background-color 0.3s ease-in-out;
-  width: fit-content;
+  transition: all 0.3s ease-in-out;
+  width: max-content;
   -webkit-tap-highlight-color: transparent;
 
   svg {
@@ -16,7 +16,7 @@
     height: 2rem;
 
     path {
-      stroke-width: 1.5px;
+      stroke-width: 0.15rem;
       fill: #80889D;
     } 
   }
@@ -28,11 +28,11 @@
     padding: 0.8rem;
     background-color: #F1F4F9;
 
-    @include from-mobile {
+    @include global.from-mobile {
       border-radius: 1.2rem;
     }
 
-    @include mobile {
+    @include global.mobile {
       border-radius: 0.8rem;
     }
   }

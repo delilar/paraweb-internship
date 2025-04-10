@@ -1,40 +1,31 @@
-import { FC, useState, useEffect } from 'react';
+import  { FC, useState } from 'react';
 import { SwitcherProps } from './types';
 import "@style/components/Switcher/Switcher.scss";
+import LayoulistIcon from "@images/icons/layout-list.svg";
+import CalendarIcon from "@images/icons/calendar.svg";
 
-const Switcher: FC<SwitcherProps> = ({ 
-  items, 
-  defaultSelected, 
-  onChange 
-}) => {
-  const [selectedId, setSelectedId] = useState<string>(
-    defaultSelected || (items.length > 0 ? items[0].id : '')
-  );
 
-  useEffect(() => {
-    if (defaultSelected && defaultSelected !== selectedId) {
-      setSelectedId(defaultSelected);
-    }
-  }, [defaultSelected]);
+const Switcher: FC = () => {
+    const [selectedIcon, setSelectedIcon] = useState<SwitcherProps['selectedIcon']>('layout-list');
 
-  const handleItemClick = (id: string) => {
-    setSelectedId(id);
-    if (onChange) {
-      onChange(id);
-    }
-  };
+    const handleIconClick: SwitcherProps['handleIconClick'] = (icon) => {
+      setSelectedIcon(icon);
+    };
 
   return (
     <div className="switcher">
-      {items.map((item) => (
-        <button 
-          key={item.id}
-          className={`switcher__button ${selectedId === item.id ? 'active' : ''}`}
-          onClick={() => handleItemClick(item.id)}
-        >
-          <item.icon />
-        </button>
-      ))}
+      <button 
+        className={`switcher__button ${selectedIcon === 'layout-list' ? 'active' : ''}`}
+        onClick={() => handleIconClick('layout-list')}
+      >
+        <LayoulistIcon />
+      </button>
+      <button 
+        className={`switcher__button ${selectedIcon === 'calendar' ? 'active' : ''}`}
+        onClick={() => handleIconClick('calendar')}
+      >
+        <CalendarIcon />
+      </button>
     </div>
   );
 };

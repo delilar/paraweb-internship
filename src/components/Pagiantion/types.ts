@@ -1,7 +1,6 @@
 export interface PaginationProps {
-    totalItems: number;
-    itemsPerPage: number;
-    page: number;
-    onChange?: (event: React.MouseEvent<HTMLButtonElement>, page: number) => void;
-  }
-  
+    count: number;
+    page?: number;
+    onChange?: (event: React.ChangeEvent<unknown>, page: number) => void;
+    disabled?: boolean;
+}
