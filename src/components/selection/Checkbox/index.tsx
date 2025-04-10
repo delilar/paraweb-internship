@@ -1,17 +1,30 @@
-import { FC, useState } from "react";
+import { FC, useState, useId } from "react";
 import { CheckboxProps } from "./types";
 import "@style/components/selection/Checkbox.scss";
 import classNames from "classnames";
 
-const Checkbox: FC<CheckboxProps> = ({ label, disabled = false, checked=false, className }) => {
-    const id = `checkbox-${label}`; // Уникальный id
+const Checkbox: FC<CheckboxProps> = ({ 
+    id: propId,
+    label, 
+    disabled = false, 
+    checked = false, 
+    className,
+    onChange 
+}) => {
+    const generatedId = useId();
+    const id = propId || `checkbox-${generatedId}${label ? `-${label}` : ""}`;
     const [isChecked, setIsChecked] = useState(checked);
 
     const checkboxClassName = classNames("checkbox", className);
 
     const handleChange = () => {
         if (!disabled) {
-            setIsChecked(!isChecked);
+            const newCheckedState = !isChecked;
+            setIsChecked(newCheckedState);
+            
+            if (onChange) {
+                onChange(newCheckedState);
+            }
         }
     };
 

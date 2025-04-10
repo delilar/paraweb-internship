@@ -1,4 +1,4 @@
-@use "@style/global/index.scss" as global;
+@use "@style/main.scss" as *;
 
 .partner-card {
     display: inline-flex;
@@ -6,9 +6,11 @@
     font-family: var(--secondary-font);
     background-color: var(--card-color);
     -webkit-tap-highlight-color: transparent;
+    width: fit-content;
+    text-decoration: none;
 
     hr {
-        border: solid 0.05rem var(--divider-color);
+        border: solid 0.5px var(--divider-color);
     }
 
     &__link {
@@ -47,19 +49,23 @@
             row-gap: 0.4rem;
         }
 
+        .partner-card__contact-person {
+            max-width: 25.6rem;
+        }
+
         small {
             @extend .text-caption;
             color: var(--text-secondary-color);
         }
 
-        p {
+        p, a {
             @extend .text-body-small-bold;
             color: var(--text-color);
+            text-decoration: none;
         }
     }
     
-    @include global.from-mobile {
-        max-width: 36rem;
+    @include from-mobile {
         row-gap: 2rem;
         border-radius: 3.2rem;
         padding: 2.4rem;
@@ -74,8 +80,7 @@
         }
     }
 
-    @include global.mobile {
-        max-width: 35rem;
+    @include mobile {
         row-gap: 1.6rem;
         border-radius: 2.4rem;
         padding: 2rem;

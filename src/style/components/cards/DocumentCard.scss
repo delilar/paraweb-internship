@@ -1,13 +1,15 @@
-@use "@style/global/index.scss" as global;
+@use "@style/main.scss" as *;
 
 .document-card {
     display: inline-flex;
     flex-direction: column;
     background-color: var(--card-color);
-    transition: all 0.3s ease-in-out;
+    
+    
+    text-decoration: none;
     -webkit-tap-highlight-color: transparent;
     
-    @include global.from-mobile {
+    @include from-mobile {
         width: 74rem;
         padding: 2.4rem;
         border-radius: 3.2rem;
@@ -19,7 +21,7 @@
         }
     }
 
-    @include global.mobile {
+    @include mobile {
         width: 35rem;
         padding: 2rem;
         border-radius: 2.4rem;
@@ -32,19 +34,31 @@
     }
 
     &:hover {
+        transition: background-color 0.3s ease-in-out;
         background-color: var(--ultramarine-default-color);
 
         .document-card__title {
-            color: var(--ultramarine-light-color-2) !important;
+            @extend .text-h4;
+            font-family: var(--main-font);
+            color: var(--ultramarine-light-color-2);
+            transition: color 0.3s ease-in-out;
         }
-
+        
         .document-card__bottom-container {
-            color: var(--text-contrast-color) !important;
-
+            color: var(--text-contrast-color);
+            transition: color 0.3s ease-in-out;
+        
             svg path {
                 stroke: var(--text-contrast-color);
+                transition: stroke 0.3s ease-in-out;
             }
         }
+        
+        .document-card__doc-info {
+            color: var(--text-contrast-color);
+            transition: color 0.3s ease-in-out;
+        }
+        
     }
 
     &:not(:hover) {
@@ -69,7 +83,7 @@
         justify-content: space-between;
 
         svg path {
-            stroke-width: 0.15rem;
+            stroke-width: 1.5px;
         }
     }
 

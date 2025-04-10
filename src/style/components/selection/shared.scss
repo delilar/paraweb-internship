@@ -1,9 +1,8 @@
-@use '@style/global/colors.scss';
-@use '@style/global/typography.scss';
+@use '@style/main.scss' as *;
 
 input[type="radio"],
 input[type="checkbox"] {
-  display: none; // Скрываем стандартный input
+  display: none;
 }
 
 label {

@@ -18,6 +18,8 @@ import classNames from "classnames";
 
 const CommunitieCard: FC<EventCardProps> = ({
     imageUrl,
+    href="#",
+    isFavorite=false,
     tagTitle="Творчество",
     tagColor='red',
     title="Название мероприятия",
@@ -41,15 +43,27 @@ const CommunitieCard: FC<EventCardProps> = ({
         }
     )
 
+    const handleBookmarkClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("Bookmark clicked");
+    };
+
     return (
-        <div className="event-card">
+        <a href={href} target="_blank" className="event-card">
             <div className="event-card__image-wrapper">
                 {imageUrl ? <img src={imageUrl} alt="Communitie" /> : <ImagePlaceholder />}
-                <div className={"event-card__event-date"}>
+                <time dateTime={endDate.toDateString()} className={"event-card__event-date"}>
                     <h2 className="event-card__day">{eventDay}</h2>
                     <p className="event-card__month">{eventMonth}</p>
-                </div>
-                <IconButton icon={<BookmarkIcon />} variant="contrast-filled" className="event-card__bookmark-button"/>
+                </time>
+                <IconButton
+                    icon={<BookmarkIcon />}
+                    variant="contrast-filled"
+                    className="event-card__bookmark-button"
+                    isChecked={isFavorite}
+                    onClick={handleBookmarkClick}
+                />
             </div>
             <div className="event-card__main-info">
                 <div className="event-card__title-info">
@@ -83,7 +97,7 @@ const CommunitieCard: FC<EventCardProps> = ({
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     )
 }
 

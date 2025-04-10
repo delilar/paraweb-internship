@@ -1,4 +1,4 @@
-@use "@style/global/index.scss" as global;
+@use "@style/main.scss" as *;
 
 .alert {
     display: inline-flex;
@@ -7,16 +7,42 @@
     font-family: var(--secondary-font);
     width: max-content;
     -webkit-tap-highlight-color: transparent;
+    position: fixed;
+    z-index: 9999;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
+    
+    // Позиционирование
+    &_position {
+        &_top-left {
+            top: 2rem;
+            left: 2rem;
+        }
+        
+        &_top-right {
+            top: 2rem;
+            right: 2rem;
+        }
+        
+        &_bottom-left {
+            bottom: 2rem;
+            left: 2rem;
+        }
+        
+        &_bottom-right {
+            bottom: 2rem;
+            right: 2rem;
+        }
+    }
     
     .alert__content {
         display: inline-flex;
         
-        @include global.from-mobile {
+        @include from-mobile {
             column-gap: 1.9rem;
         }
 
-        @include global.mobile {
-            column-gap: 1.45rem;
+        @include mobile {
+            column-gap: 145px;
         }
     }
     
@@ -29,7 +55,7 @@
             stroke: var(--electric-green-default-color);
         }
 
-        @include global.from-mobile {
+        @include from-mobile {
             svg {
                 width: 2.4rem;
                 height: 2.4rem;
@@ -41,15 +67,15 @@
             } 
         }
 
-        @include global.mobile {
+        @include mobile {
             svg {
                 width: 2rem;
                 height: 2rem;
             }
 
             svg path {
-                width: 1.5rem;
-                height: 1.5rem;
+                width: 15px;
+                height: 15px;
             }
         }
     }
@@ -67,11 +93,11 @@
             color: var(--text-secondary-color);
         }
 
-        @include global.from-mobile {
+        @include from-mobile {
             min-width: 30rem;
         }
 
-        @include global.mobile {
+        @include mobile {
             min-width: 24rem;
         }
     }
@@ -82,29 +108,30 @@
         align-items: center;
         border: none;
         background: none;
+        cursor: pointer;
 
-        @include global.from-mobile {
+        @include from-mobile {
             width: 2.4rem;
             height: 2.4rem;
             row-gap: 3.2rem;
         }
 
-        @include global.mobile {
+        @include mobile {
             width: 1.6rem;
             height: 1.6rem;
             row-gap: 2.4rem;
         }
 
         svg path {
-            stroke-width: 0.15rem;
+            stroke-width: 1.5px;
             stroke: var(--text-secondary-color);
 
-            @include global.from-mobile {
+            @include from-mobile {
                 width: 1rem;
                 height: 1rem;
             }
 
-            @include global.mobile {
+            @include mobile {
                 width: 0.8rem;
                 height: 0.8rem;
             }
@@ -119,11 +146,11 @@
         border: solid 0.1rem var(--electric-green-default-color);
     }
 
-    @include global.from-mobile {
+    @include from-mobile {
         padding: 2.4rem;
     }
 
-    @include global.mobile {
+    @include mobile {
         padding: 2rem;
     }
 }

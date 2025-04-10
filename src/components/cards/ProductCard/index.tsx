@@ -7,8 +7,13 @@ import CoinIcon from "@images/coin-icon.svg";
 import Button from "@/components/buttons/Button";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 
-const ProductCard: FC<ProductCardProps> = ({ coins=100, title="Наименование приза", buttonText="Получить", imageUrl }) => {
-
+const ProductCard: FC<ProductCardProps> = ({ 
+  coins=100, 
+  title="Наименование приза", 
+  buttonText="Получить", 
+  imageUrl,
+  href="#" 
+}) => {
     return (
         <div className="product-card">
             <div className="product-card__image">
@@ -21,7 +26,7 @@ const ProductCard: FC<ProductCardProps> = ({ coins=100, title="Наименов�
                 </div>
                 <h4 className="product-card__title">{title}</h4>
             </div>
-            <Button className="product-card__purchase-button">{buttonText}</Button>
+            <Button className="product-card__purchase-button" href={href}>{buttonText}</Button>
         </div>
     )
 }

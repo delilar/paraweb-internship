@@ -3,4 +3,5 @@ export interface LevelCardProps {
     imageUrl?: string;
     coins?: number;
     disabled?: boolean;
+    href?: string;
 }

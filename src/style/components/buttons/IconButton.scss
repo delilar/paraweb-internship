@@ -1,4 +1,4 @@
-@use "@style/global/index.scss" as global;
+@use "@style/main.scss" as *;
 
 
 .icon-button {
@@ -7,12 +7,12 @@
   justify-content: center;
   border: none;
   border-radius: 1.2rem;
-  transition: all 0.3s ease-in-out;
-  width: max-content;
+  transition: background-color 0.3s ease-in-out;
+  width: fit-content;
   -webkit-tap-highlight-color: transparent;
 
   svg path {
-    stroke-width: 0.15rem;
+    stroke-width: 1.5px;
     stroke: var(--text-secondary-color);
     transition: stroke 0.3s ease-in-out, 
                 fill 0.3s ease-in-out, 
@@ -24,7 +24,7 @@
     background-color: var(--gray-color-2);
     border-radius: 0.8rem;
 
-    @include global.from-mobile {
+    @include from-mobile {
       &:hover {
         svg path {
           stroke: var(--ultramarine-default-color);
@@ -37,7 +37,7 @@
       }
     }
     
-    @include global.mobile {
+    @include mobile {
       svg {
         width: 1.6rem;
         height: 1.6rem;
@@ -63,7 +63,7 @@
     padding: 0.4rem;
     background-color: transparent;
 
-    @include global.from-mobile {
+    @include from-mobile {
       &:hover {
         svg path {
           stroke: var(--ultramarine-default-color);
@@ -76,7 +76,7 @@
       }
     }
     
-    @include global.mobile {
+    @include mobile {
       svg {
         width: 1.6rem;
         height: 1.6rem;
@@ -100,7 +100,7 @@
     padding: 0.8rem;
     background-color: transparent;
     
-    @include global.from-mobile {
+    @include from-mobile {
       &:hover {
         background-color: var(--gray-color-4);
       }
@@ -111,7 +111,7 @@
       }
     }
     
-    @include global.mobile {
+    @include mobile {
       svg {
         width: 2rem;
         height: 2rem;
@@ -138,7 +138,7 @@
       stroke: var(--text-contrast-color);
     }
 
-    @include global.from-mobile {
+    @include from-mobile {
       &:hover {
         background-color: var(--text-contrast-blind-color);
       }
@@ -153,7 +153,7 @@
       }
     }    
     
-    @include global.mobile {
+    @include mobile {
       svg {
         width: 2rem;
         height: 2rem;
@@ -180,7 +180,7 @@
       stroke: var(--text-contrast-color);
     }
 
-    @include global.from-mobile {
+    @include from-mobile {
       &:hover {
         background-color: var(--ultramarine-default-color);
       }
@@ -191,7 +191,7 @@
       }
     }
     
-    @include global.mobile {
+    @include mobile {
       svg {
         width: 2rem;
         height: 2rem;
@@ -208,6 +208,14 @@
 
     &:disabled {
       display: none;
+    }
+  }
+
+  &--checked {
+    background-color: #FFFFFF33;
+
+    svg path {
+      fill: var(--text-contrast-color);
     }
   }
 }

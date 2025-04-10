@@ -48,4 +48,24 @@ $from-tablet: $tablet + 1px;
   @media (min-width: $from-mobile) {
     @content;
   }
+<<<<<<< Updated upstream
+=======
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+
+@mixin active {
+  @media (hover: hover) {
+    &:hover:active {
+      @content;
+    }
+  }
+>>>>>>> Stashed changes
 }

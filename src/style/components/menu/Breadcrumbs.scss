@@ -1,4 +1,4 @@
-@use "@style/global/index.scss" as global;
+@use "@style/main.scss" as *;
 
 .breadcrumb {
     display: inline-flex;
@@ -22,15 +22,15 @@
             display: inline-block;
         }
 
-        @include global.from-mobile {
+        @include from-mobile {
             &::before {
                 margin: 0 1.8rem;
             }
         }
 
-        @include global.mobile {
+        @include mobile {
             &::before {
-                margin: 0 1.25rem;
+                margin: 0 12.5px;
             }
         }
     }

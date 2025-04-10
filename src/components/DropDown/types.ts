@@ -1,5 +1,4 @@
-
-type Option = {
+export type Option = {
   id: number;
   label: string;
   checked?: boolean;
@@ -10,4 +9,5 @@ type Option = {
 export interface DropdownProps {
   title?: string;
   optionsData: Option[];
+  onChange?: (selectedOption: Option | undefined, checkedOptions: Option[]) => void;
 }

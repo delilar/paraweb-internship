@@ -1,11 +1,11 @@
-@use "@style/global/index.scss" as global;
+@use "@style/main.scss" as *;
 
 .user-icon-button {
-  transition: all 0.3s ease-in-out;
+  transition: border 0.3s ease-in-out;
   border: solid var(--border-color) 0.1rem;
   background-color: transparent;
   padding: 0.4rem;
-  width: max-content;
+  width: fit-content;
   -webkit-tap-highlight-color: transparent;
 
   .icon-wrapper {
@@ -18,12 +18,12 @@
 
   svg {
     path {
-      stroke-width: 0.15rem;
+      stroke-width: 1.5px;
       stroke: var(--text-contrast-color);
     }
   }
 
-  @include global.from-mobile {
+  @include from-mobile {
     border-radius: 1.2rem;
 
     .icon-wrapper {
@@ -44,7 +44,7 @@
     }
   }
 
-  @include global.mobile {
+  @include mobile {
     border-radius: 1rem;
 
     .icon-wrapper {

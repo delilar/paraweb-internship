@@ -1,4 +1,12 @@
+import { FC, SVGProps } from "react";
+
+export interface SwitcherItem {
+  id: string;
+  icon: string | FC<SVGProps<SVGSVGElement>>;
+}
+
 export interface SwitcherProps {
-    selectedIcon: 'layout-list' | 'calendar';
-    handleIconClick: (icon: 'layout-list' | 'calendar') => void;
-  }
+  items: SwitcherItem[];
+  defaultSelected?: string;
+  onChange?: (selectedId: string) => void;
+}

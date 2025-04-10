@@ -1,4 +1,4 @@
-@use "@style/global/index.scss" as global;
+@use "@style/main.scss" as *;
 
 .communitie-card {
     display: inline-flex;
@@ -6,6 +6,8 @@
     padding: 0.8rem;
     font-family: var(--secondary-font);
     background-color: var(--card-color);
+    text-decoration: none;
+    width: fit-content;
     -webkit-tap-highlight-color: transparent;
 
     img {
@@ -15,14 +17,12 @@
         border-radius: inherit;
     }
 
-    @include global.from-mobile {
-        max-width: 36rem;
+    @include from-mobile {
         border-radius: 3.2rem;
         row-gap: 2rem;
     }
 
-    @include global.mobile {
-        max-width: 35rem;
+    @include mobile {
         border-radius: 2.4rem;
         row-gap: 1.6rem;
     }
@@ -32,11 +32,11 @@
         width: 100%;
         position: relative;
 
-        @include global.from-mobile {
+        @include from-mobile {
             border-radius: 2.4rem;
         }
 
-        @include global.mobile {
+        @include mobile {
             border-radius: 2rem;
         }
 
@@ -51,12 +51,12 @@
         display: inline-flex;
         flex-direction: column;
 
-        @include global.from-mobile {
+        @include from-mobile {
             row-gap: 3.2rem;
             padding: 0 1.6rem 1.6rem 1.6rem;
         }
 
-        @include global.mobile {
+        @include mobile {
             row-gap: 2.4rem;
             padding: 0 1.2rem 1.2rem 1.2rem;
         }
@@ -66,11 +66,11 @@
         display: inline-flex;
         flex-direction: column;
 
-        @include global.from-mobile {
+        @include from-mobile {
             row-gap: 2rem;
         }
 
-        @include global.mobile {
+        @include mobile {
             row-gap: 1.6rem;
         }
     }
@@ -80,7 +80,7 @@
         font-family: var(--main-font);
         color: var(--text-color);
 
-        @include global.from-mobile {
+        @include from-mobile {
             &:hover {
                 transition: color 0.3s ease-in-out;;
                 color: var(--ultramarine-default-color);
@@ -92,12 +92,12 @@
         display: inline-flex;
         border-top: solid 0.1rem var(--divider-color);
 
-        @include global.from-mobile {
+        @include from-mobile {
             padding-top: 2rem;
             column-gap: 1.6rem;
         }
 
-        @include global.mobile {
+        @include mobile {
             padding-top: 1.6rem;
             column-gap: 1.2rem;
         }
@@ -106,14 +106,14 @@
     &__user-image {
         border-radius: 1.2rem;
 
-        @include global.from-mobile {
+        @include from-mobile {
             min-height: 4rem;
             min-width: 4rem;
             height: 4rem;
             width: 4rem;
         }
 
-        @include global.mobile {
+        @include mobile {
             min-height: 3.2rem;
             min-width: 3.2rem;
             height: 3.2rem;
@@ -128,6 +128,7 @@
     }
 
     &__fullname {
+        max-width: 25.6rem;
         @extend .text-body-small;
         color: var(--text-color);
     }

@@ -1,17 +1,18 @@
-@use "@style/global/index.scss" as global;
+@use "@style/main.scss" as *;
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--secondary-font);
-  transition: all 0.3s ease-in-out;
-  @extend.text-button;
-  width: max-content;
+  transition: background-color 0.3s ease-in-out;
+  @extend .text-button;
+  width: fit-content;
+  text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 
   svg path {
-    stroke-width: 0.15rem;
+    stroke-width: 1.5px;
   }
 
   &--filled {
@@ -22,7 +23,7 @@
       stroke: var(--text-contrast-color);
     }
 
-    @include global.from-mobile {
+    @include from-mobile {
       &:hover {
         background-color: var(--ultramarine-dark-color);
       }
@@ -46,7 +47,7 @@
       stroke: var(--ultramarine-default-color);
     }
 
-    @include global.from-mobile {
+    @include from-mobile {
       &:hover {
         background-color: var(--gray-color-1);
       }
@@ -71,9 +72,9 @@
       stroke: var(--ultramarine-default-color);
     }
 
-    @include global.from-mobile {
+    @include from-mobile {
       &:hover {
-        color: var(ultramarine-dark-color);
+        color: var(--ultramarine-dark-color);
       }
     }
 
@@ -92,9 +93,9 @@
       stroke: var(--ultramarine-default-color);
     }
 
-    @include global.from-mobile {
+    @include from-mobile {
       &:hover {
-        color: var(ultramarine-dark-color);
+        color: var(--ultramarine-dark-color);
       }
     }
 
@@ -111,7 +112,7 @@
       stroke: var(--ultramarine-default-color);
     }
 
-    @include global.from-mobile {
+    @include from-mobile {
       &:hover {
         background-color: var(--gray-color-1);
       }
@@ -139,7 +140,7 @@
     }
   }
 
-  @include global.from-mobile {
+  @include from-mobile {
     border-radius: 1.2rem;
     padding: 1.3rem 1.6rem;
     column-gap: 1.2rem;
@@ -150,7 +151,7 @@
     }
   }
 
-  @include global.mobile {
+  @include mobile {
     border-radius: 1rem;
     padding: 1.2rem;
     column-gap: 0.8rem;

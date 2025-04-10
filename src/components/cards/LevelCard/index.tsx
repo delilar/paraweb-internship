@@ -8,7 +8,13 @@ import CheckIcon from "@images/icons/check.svg"
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import classNames from "classnames";
 
-const LevelCard: FC<LevelCardProps> = ({ coins=100, title="Наименование уровня", imageUrl, disabled=false }) => {
+const LevelCard: FC<LevelCardProps> = ({ 
+    coins=100, 
+    title="Наименование уровня", 
+    imageUrl, 
+    disabled=false,
+    href="#"
+}) => {
     const block = "level-card";
 
     const className = classNames(block, {
@@ -24,7 +30,11 @@ const LevelCard: FC<LevelCardProps> = ({ coins=100, title="Наименован�
                 {imageUrl ? <img src={imageUrl} alt="Level" /> : <ImagePlaceholder />}
             </div>
             <div className={getClass("info")}>
-                <h4 className={getClass("title")}>{title}</h4>
+                <h4 className={getClass("title")}>
+                    <a href={disabled ? undefined : href} className={getClass("link")}>
+                        {title}
+                    </a>
+                </h4>
                 {disabled ? (
                     <div className={getClass("coin-tag")}>
                         <CoinDisabledIcon />
