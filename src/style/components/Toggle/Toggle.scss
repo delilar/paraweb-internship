@@ -1,4 +1,4 @@
-@use "@style/main.scss" as *;
+@use "@style/global/base.scss" as base;
 
 .toggle {
     position: relative;
@@ -32,7 +32,7 @@
 
     &:not(.toggle_checked) {
 
-        @include from-mobile {
+        @include base.from-mobile {
             &:hover {
                 border: solid var(--ultramarine-default-color) 0.1rem;
     
@@ -58,13 +58,13 @@
             position: absolute;
             background-color: var(--text-blind-color);
             
-            @include from-mobile {
+            @include base.from-mobile {
                 top: 50%;
                 transform: translateY(-50%);
                 left: 0.3rem;
             }
     
-            @include mobile {
+            @include base.mobile {
                 top: 50%;
                 transform: translateY(-50%);
                 left: 0.3rem;
@@ -73,7 +73,7 @@
     }
 
     &.toggle_checked {
-        @include from-mobile {
+        @include base.from-mobile {
             &:hover {
                 border: solid var(--ultramarine-dark-color) 0.1rem;
                 background-color: var(--ultramarine-dark-color);
@@ -87,9 +87,9 @@
 
         svg {
             position: absolute;
-            stroke-width: 1.5px;
+            stroke-width: 0.15rem;
 
-            @include from-mobile {
+            @include base.from-mobile {
                 width: 2rem;
                 height: 2rem;
                 top: 50%;
@@ -97,7 +97,7 @@
                 transform: translateY(-50%);
             }
     
-            @include mobile {
+            @include base.mobile {
                 width: 1.6rem;
                 height: 1.6rem;
                 top: 50%;
@@ -114,13 +114,13 @@
             position: absolute;
             background-color: var(--card-color);
 
-            @include from-mobile {
+            @include base.from-mobile {
                 top: 50%;
                 transform: translateY(-50%);
                 right: 0.3rem;
             }
     
-            @include mobile {
+            @include base.mobile {
                 top: 50%;
                 transform: translateY(-50%);
                 right: 0.3rem;
@@ -128,7 +128,7 @@
         }
     }
 
-    @include from-mobile {
+    @include base.from-mobile {
         width: 4.2rem;
         height: 2rem;
 
@@ -138,7 +138,7 @@
         }
     }
 
-    @include mobile {
+    @include base.mobile {
         width: 3.6rem;
         height: 1.6rem;
 

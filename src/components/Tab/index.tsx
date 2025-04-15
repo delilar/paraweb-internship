@@ -3,17 +3,11 @@ import { TabProps } from './types';
 import '@style/components/Tab/Tab.scss';
 
 const Tab: FC<TabProps> = ({ count, label, isActive = false, onClick, disabled = false }) => {
-  
-  const handleClick = () => {
-    if (!disabled && onClick) {
-      onClick();
-    }
-  };
 
   return (
     <div
       className={`tab ${isActive ? 'active' : ''} ${disabled ? 'disabled' : ''}`}
-      onClick={handleClick}
+      onClick={disabled ? undefined : onClick}
     >
       <span className="label">{label}</span>
       <div className="count-wrapper">

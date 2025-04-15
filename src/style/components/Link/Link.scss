@@ -1,4 +1,4 @@
-@use "@style/main.scss" as *;
+@use "@style/global/typography.scss";
 
 .link {
     font-family: var(--secondary-font);
@@ -33,7 +33,7 @@
         }
 
         path {
-            stroke-width: 1.5px;
+            stroke-width: 0.15rem;
             stroke: var(--ultramarine-default-color);
         }
     }

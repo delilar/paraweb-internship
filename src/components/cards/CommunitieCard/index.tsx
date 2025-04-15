@@ -11,8 +11,6 @@ import IconButton from "@/components/buttons/IconButton";
 
 const CommunitieCard: FC<CommunitieCardProps> = ({
     imageUrl,
-    href="#",
-    isFavorite=false,
     tagTitle="Творчество",
     tagColor='red',
     title="Название сообщества",
@@ -20,24 +18,11 @@ const CommunitieCard: FC<CommunitieCardProps> = ({
     fullname="Константинопольский Константин Константинович",
     jobTitle="Ответственный"
 }) => {
-
-    const handleBookmarkClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log("Bookmark clicked");
-    };
-
     return (
-        <a href={href} target="_blank" className="communitie-card">
+        <div className="communitie-card">
             <div className="communitie-card__image-wrapper">
                 {imageUrl ? <img src={imageUrl} alt="Communitie" /> : <ImagePlaceholder />}
-                <IconButton
-                    icon={<BookmarkIcon />}
-                    variant="contrast-filled"
-                    className="communitie-card__bookmark-button"
-                    isChecked={isFavorite}
-                    onClick={handleBookmarkClick}
-                />
+                <IconButton icon={<BookmarkIcon />} variant="contrast-filled" className="communitie-card__bookmark-button"/>
             </div>
             <div className="communitie-card__main-info">
                 <div className="communitie-card__title-info">
@@ -55,7 +40,7 @@ const CommunitieCard: FC<CommunitieCardProps> = ({
                     </div>
                 </div>
             </div>
-        </a>
+        </div>
     )
 }
 

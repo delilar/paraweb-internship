@@ -1,26 +1,15 @@
-import { FC, useState, useId } from "react";
+import { FC, useState } from "react";
 import { RadiobuttonProps } from "./types";
 import "@style/components/selection/Radiobutton.scss"
 
-const Radiobutton: FC<RadiobuttonProps> = ({ 
-    id: propId,
-    name = "", 
-    label, 
-    disabled = false,
-    onChange 
-}) => {
-    const generatedId = useId(); // Генерируем уникальный id с помощью хука useId
-    const id = propId || `radio-${generatedId}${name ? `-${name}` : ""}${label ? `-${label}` : ""}`;
+
+const Radiobutton: FC<RadiobuttonProps> = ({ name = "", label, disabled = false }) => {
+    const id = `radio-${name}-${label}`; // Уникальный id для каждого инпута
     const [isChecked, setIsChecked] = useState(false);
 
-    const handleChange = () => {
+    const handleClick = () => {
         if (!disabled) {
-            const newCheckedState = !isChecked;
-            setIsChecked(newCheckedState);
-            
-            if (onChange) {
-                onChange(newCheckedState);
-            }
+            setIsChecked(!isChecked);
         }
     };
 
@@ -33,7 +22,8 @@ const Radiobutton: FC<RadiobuttonProps> = ({
                 name={name}
                 disabled={disabled}
                 checked={isChecked}
-                onChange={handleChange}
+                onChange={() => {}} // Controlled component needs onChange
+                onClick={handleClick}
             />
             <label className={`radiobutton__label ${disabled ? "disabled" : ""}`} htmlFor={id}>
                 {label}

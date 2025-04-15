@@ -1,4 +1,4 @@
-@use "@style/main.scss" as *;
+@use "@style/global/index.scss" as global;
 
 .event-card {
     display: inline-flex;
@@ -6,8 +6,6 @@
     padding: 0.8rem;
     font-family: var(--secondary-font);
     background-color: var(--card-color);
-    text-decoration: none;
-    width: fit-content;
     -webkit-tap-highlight-color: transparent;
 
     img {
@@ -17,12 +15,14 @@
         border-radius: inherit;
     }
 
-    @include from-mobile {
+    @include global.from-mobile {
+        max-width: 36rem;
         border-radius: 3.2rem;
         row-gap: 2rem;
     }
 
-    @include mobile {
+    @include global.mobile {
+        max-width: 35rem;
         border-radius: 2.4rem;
         row-gap: 1.6rem;
     }
@@ -32,11 +32,11 @@
         width: 100%;
         position: relative;
 
-        @include from-mobile {
+        @include global.from-mobile {
             border-radius: 2.4rem;
         }
 
-        @include mobile {
+        @include global.mobile {
             border-radius: 2rem;
         }
 
@@ -71,11 +71,11 @@
             @extend .text-caption;
         }
 
-        @include from-mobile {
-            padding: 0.8rem 7.5px;
+        @include global.from-mobile {
+            padding: 0.8rem 0.75rem;
         }
 
-        @include mobile {
+        @include global.mobile {
             padding: 0.8rem 1rem;
         }
     }
@@ -84,12 +84,12 @@
         display: inline-flex;
         flex-direction: column;
 
-        @include from-mobile {
+        @include global.from-mobile {
             row-gap: 3.2rem;
             padding: 0 1.6rem 1.6rem 1.6rem;
         }
 
-        @include mobile {
+        @include global.mobile {
             row-gap: 2.4rem;
             padding: 0 1.2rem 1.2rem 1.2rem;
         }
@@ -99,11 +99,11 @@
         display: inline-flex;
         flex-direction: column;
 
-        @include from-mobile {
+        @include global.from-mobile {
             row-gap: 2rem;
         }
 
-        @include mobile {
+        @include global.mobile {
             row-gap: 1.6rem;
         }
     }
@@ -113,7 +113,7 @@
         font-family: var(--main-font);
         color: var(--text-color);
 
-        @include from-mobile {
+        @include global.from-mobile {
             &:hover {
                 transition: color 0.3s ease-in-out;;
                 color: var(--ultramarine-default-color);
@@ -135,11 +135,11 @@
     }
 
     &__tags-wrapper > *:nth-child(2) {
-        @include from-mobile {
+        @include global.from-mobile {
             margin-right: 5rem;
         }
 
-        @include mobile {
+        @include global.mobile {
             margin-right: 8.6rem;
         }
     }
@@ -147,19 +147,19 @@
     &__coin-tag {
         background-color: #FFF0BC;
         border-radius: 0.8rem;
-        padding: 5px 0.8rem;
+        padding: 0.5rem 0.8rem;
         column-gap: 0.4rem;
         color: var(--text-color);
         @extend .text-tag;
 
-        @include from-mobile {
+        @include global.from-mobile {
             svg {
                 width: 1.6rem;
                 height: 1.6rem;;
             }
         }
 
-        @include mobile {
+        @include global.mobile {
             svg {
                 width: 1.2rem;
                 height: 1.2rem;
@@ -173,12 +173,12 @@
         column-gap: 0.4rem;
 
         svg {
-            @include from-mobile {
+            @include global.from-mobile {
                 width: 2rem;
                 height: 2rem;
             }
 
-            @include mobile {
+            @include global.mobile {
                 width: 1.6rem;
                 height: 1.6rem;
             }
@@ -202,12 +202,12 @@
         display: inline-flex;
         border-top: solid 0.1rem var(--divider-color);
 
-        @include from-mobile {
+        @include global.from-mobile {
             padding-top: 2rem;
             column-gap: 1.6rem;
         }
 
-        @include mobile {
+        @include global.mobile {
             padding-top: 1.6rem;
             column-gap: 1.2rem;
         }
@@ -218,11 +218,11 @@
         flex-direction: column;
         column-gap: 0.8rem;
         
-        @include from-mobile {
+        @include global.from-mobile {
             row-gap: 1.6rem;
         }
 
-        @include mobile {
+        @include global.mobile {
             row-gap: 1.2rem;
         }
     }
@@ -231,16 +231,15 @@
         display: inline-flex;
         align-items: center;
         column-gap: 0.8rem;
-        color: var(--text-color);
         @extend .text-body-small;
 
         svg {
-            @include from-mobile {
+            @include global.from-mobile {
                 width: 2rem;
                 height: 2rem;
             }
 
-            @include mobile {
+            @include global.mobile {
                 width: 1.6rem;
                 height: 1.6rem;
             }

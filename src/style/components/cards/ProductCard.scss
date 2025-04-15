@@ -1,4 +1,4 @@
-@use "@style/main.scss" as *;
+@use "@style/global/index.scss" as global;
 
 .product-card {
     display: inline-flex;
@@ -6,14 +6,15 @@
     align-items: center;
     background-color: var(--card-color);
     padding: 0.8rem;
-    width: fit-content;
     -webkit-tap-highlight-color: transparent;
 
-    @include from-mobile {
+    @include global.from-mobile {
+        max-width: 18rem;
         border-radius: 3.2rem;
     }
 
-    @include mobile {
+    @include global.mobile {
+        max-width: 16.8rem;
         border-radius: 2.4rem;
     }
 
@@ -27,13 +28,13 @@
             border-radius: inherit;
         }
         
-        @include from-mobile {
+        @include global.from-mobile {
             border-radius: 2.4rem;
             width: 16.4rem;
             height: 16.4rem;
         }
 
-        @include mobile {
+        @include global.mobile {
             border-radius: 2rem;
             width: 15.2rem;
             height: 15.2rem;
@@ -45,12 +46,12 @@
         row-gap: 0.8rem;
         flex-direction: column;
 
-        @include from-mobile {
+        @include global.from-mobile {
             margin: 2rem 0;
             padding: 0 0.8rem;
         }
 
-        @include mobile {
+        @include global.mobile {
             margin: 2rem 0 1.6rem;
             padding: 0 0.4rem;
         }
@@ -64,12 +65,12 @@
         color: var(--text-secondary-color);
 
         svg {
-            @include from-mobile {
+            @include global.from-mobile {
                 width: 1.6rem;
                 height: 1.6rem;
             }
     
-            @include mobile {
+            @include global.mobile {
                 width: 1.2rem;
                 height: 1.2rem;
             }
@@ -84,11 +85,11 @@
     &__purchase-button {
         width: 100%;
 
-        @include from-mobile {
+        @include global.from-mobile {
             margin: 0 0.8rem 0.8rem 0.8rem;
         }
 
-        @include mobile {
+        @include global.mobile {
             margin: 0 0.4rem 0.4rem 0.4rem;
         }
     }

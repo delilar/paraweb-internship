@@ -3,5 +3,4 @@ export interface ProductCardProps {
     title?: string;
     buttonText?: string;
     imageUrl?: string;
-    href?: string;
 }
