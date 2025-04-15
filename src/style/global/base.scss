@@ -48,8 +48,6 @@ $from-tablet: $tablet + 1px;
   @media (min-width: $from-mobile) {
     @content;
   }
-<<<<<<< Updated upstream
-=======
 }
 
 @mixin hover {
@@ -60,12 +58,10 @@ $from-tablet: $tablet + 1px;
   }
 }
 
-
 @mixin active {
   @media (hover: hover) {
     &:hover:active {
       @content;
     }
   }
->>>>>>> Stashed changes
 }

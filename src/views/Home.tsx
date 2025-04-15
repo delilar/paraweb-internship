@@ -1,9 +1,14 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 import PencilIcon from '@images/icons/pencil.svg'
 import PlusIcon from '@images/icons/plus.svg'
 import UserIсon from '@images/icons/user.svg'
 import TelegramIcon from '@images/social/social-tg.svg'
+import LayoulistIcon from "@images/icons/layout-list.svg";
+import CalendarIcon from "@images/icons/calendar.svg";
+
+import { SwitcherItem } from "@/components/Switcher/types";
+import { Option } from "@/components/DropDown/types";
 
 import PartnerCard from "../components/cards/PartnerCard";
 import Alert from "../components/Alert";
@@ -29,6 +34,33 @@ import Switcher from "@/components/Switcher";
 import Toggle from "@/components/Toggle";
 
 const Home: FC = () => {
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [currentView, setCurrentView] = useState<string>('layout-list');
+    const [ , setSelectedOptions] = useState<Option[]>([]);
+
+    const switcherItems: SwitcherItem[] = [
+        {
+          id: 'layout-list',
+          icon: LayoulistIcon
+        },
+        {
+          id: 'calendar',
+          icon: CalendarIcon
+        }
+      ];
+
+    const handleDropdownChange = (selectedOption: Option | undefined, checkedOptions: Option[]) => {
+        console.log("Выбранная опция:", selectedOption);
+        console.log("Все выбранные опции:", checkedOptions);
+        setSelectedOptions(checkedOptions);
+      };
+
+    const handleViewChange = (selectedId: string) => {
+        setCurrentView(selectedId);
+        console.log(`View changed to: ${selectedId}`);
+      };
+
     return (
         <div style={{
             backgroundColor: 'gray',
@@ -38,9 +70,9 @@ const Home: FC = () => {
             padding: '3rem',
         }}>
             <h1>Home</h1>
-            <Alert type="success" />
+            <Alert type="success" position="top-right" />
             <Alert type="error" />
-            <Pagination count={15}/>
+            <Pagination totalItems={50} itemsPerPage={5} page={currentPage} onChange={(e, newPage) => setCurrentPage(newPage)}/>
             <Checkbox label="texts" />
             <Radiobutton label="text" />
             <Button iconLeft={PencilIcon} iconRight={PlusIcon}> Кнопка </ Button>
@@ -60,17 +92,27 @@ const Home: FC = () => {
             <ProductCard />
             <LevelCard />
             <EventCard startDate={new Date("2025-04-28T12:30:00.000Z")} endDate={new Date("2025-04-28T16:00:00.000Z")}/>
-            <DocumentCard />
+            <DocumentCard href="#"/>
             <Link type="underlined">Text</Link>
             <Link type="social" socialType="tg">Text</Link>
             <Link type="icon">Link</Link>
-            <Dropdown optionsData={[{id: 1, label: "Option 1"}, {id: 2, label: "Option 2"}]}/>
+            <Dropdown optionsData={[
+                {id: 1, label: "Option 1"},
+                {id: 2, label: "Option 2"},
+                {id: 3, label: "Option 3"}
+                ]}
+                onChange={handleDropdownChange}
+                />
             <Tab count={100} label="Text" />
             <Tag type="primary" mainValue="Наука" color="green" />
             <Tag type="deletable" mainValue="Английский" secondaryValue="C1" color="gray" />
             <Breadcrumbs links={[{label: "Первый пункт", href: "https://www.google.com/"}, {label: "Второй пункт", href: "https://www.google.com/", disabled: true}]} />
             <HeaderMenu links={[{label: "Первый пункт", href: "https://www.google.com/"}, {label: "Второй пункт", href: "https://www.google.com/", disabled: true}]} />
-            <Switcher />
+            <Switcher 
+                items={switcherItems}
+                defaultSelected={currentView}
+                onChange={handleViewChange}
+            />
             <Toggle />
         </div>
     );
