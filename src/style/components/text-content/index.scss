@@ -1,0 +1,399 @@
+@use "@style/main.scss" as *;
+@use "./shared.scss" as *;
+
+// This file contains all text-content styles
+// The .text-content class is a wrapper that applies styles to HTML tags
+// All styling is done via tag selectors, not classes
+.text-content {
+  // Base styles are in shared.scss
+  color: var(--text-color);
+
+  // Paragraphs
+  p {
+    margin-bottom: 1.6rem;
+    line-height: 1.5;
+    
+    @include mobile {
+      font-size: 1.4rem;
+    }
+    
+    @include from-mobile {
+      font-size: 1.6rem;
+    }
+  }
+
+  // Headings
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--primary-font);
+    font-weight: 600;
+    margin-top: 2.4rem;
+    margin-bottom: 1.6rem;
+    line-height: 1.2;
+    color: var(--heading-color, var(--text-color));
+  }
+  
+  h1 {
+    font-size: 2.8rem;
+    
+    @include from-mobile {
+      font-size: 3.2rem;
+    }
+  }
+  
+  h2 {
+    font-size: 2.4rem;
+    
+    @include from-mobile {
+      font-size: 2.8rem;
+    }
+  }
+  
+  h3 {
+    font-size: 2rem;
+    
+    @include from-mobile {
+      font-size: 2.4rem;
+    }
+  }
+  
+  h4, h5, h6 {
+    font-size: 1.8rem;
+    
+    @include from-mobile {
+      font-size: 2rem;
+    }
+  }
+
+  // Lists
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 1.6rem;
+    display: inline-flex;
+    flex-direction: column;
+    
+    @include from-mobile {
+      row-gap: 1.6rem;
+    }
+    
+    @include mobile {
+      row-gap: 1.2rem;
+    }
+    
+    li {
+      margin-bottom: 0;
+      line-height: 1.5;
+      position: relative;
+      padding-left: 3.7rem;
+      
+      @include mobile {
+        font-size: 1.4rem;
+      }
+      
+      @include from-mobile {
+        font-size: 1.6rem;
+      }
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0.9rem;
+        top: 1rem;
+        background-color: var(--ultramarine-default-color);
+        border-radius: 50%;
+        
+        @include mobile {
+          width: 0.6rem;
+          height: 0.6rem;
+        }
+        
+        @include from-mobile {
+          width: 5px;
+          height: 5px;
+        }
+      }
+      
+      // Nested lists
+      ul {
+        margin-top: 1.6rem;
+        margin-bottom: 0;
+        padding-left: 0;
+        
+        li {
+          padding-left: 2.1rem;
+          position: relative;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            width: 14px;
+            height: 2px;
+            border-radius: 1rem;
+            background-color: var(--ultramarine-default-color);
+          }
+        }
+      }
+    }
+  }
+
+  ol {
+    list-style-type: none;
+    display: inline-flex;
+    flex-direction: column;
+    margin-bottom: 1.6rem;
+    counter-reset: numbered-list;
+    
+    @include from-mobile {
+      row-gap: 1.6rem;
+    }
+    
+    @include mobile {
+      row-gap: 1.2rem;
+    }
+    
+    li {
+      position: relative;
+      counter-increment: numbered-list;
+      padding-left: 3.7rem;
+      line-height: 1.5;
+      
+      @include mobile {
+        font-size: 1.4rem;
+      }
+      
+      @include from-mobile {
+        font-size: 1.6rem;
+      }
+      
+      &::before {
+        position: absolute;
+        top: -0.2rem;
+        left: 0;
+        content: counter(numbered-list) ".";
+        font-weight: 600;
+        font-size: 1.8rem;
+        line-height: 2.6rem;
+        
+        @include mobile {
+          font-size: 1.6rem;
+          line-height: 2.4rem;
+        }
+      }
+    }
+  }
+
+  // Tables
+  figure.table {
+    overflow-x: auto;
+    max-width: 100%;
+    
+    @include from-mobile {
+      margin: 5.6rem 0;
+      border-radius: 3.2rem;
+    }
+    
+    @include mobile {
+      margin: 4.8rem 0;
+      border-radius: 2.4rem;
+    }
+    
+    &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: var(--card-color);
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: var(--text-secondary-promo-color);
+      border-radius: 4px;
+    }
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: var(--secondary-font);
+    table-layout: auto;
+    min-width: 100%;
+    
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      word-wrap: break-word;
+      overflow: hidden;
+    }
+    
+    th {
+      color: var(--card-color);
+      background-color: var(--ultramarine-light-color-1);
+      border-right: 1px solid var(--ultramarine-dark-color);
+      border-left: 1px solid var(--ultramarine-dark-color);
+      @include table-heading;
+      
+      @include from-mobile {
+        padding: 2.4rem;
+      }
+      
+      @include mobile {
+        padding: 1.6rem;
+      }
+      
+      &:first-child {
+        border-left: none;
+      }
+      
+      &:last-child {
+        border-right: none;
+      }
+    }
+    
+    td {
+      background-color: var(--card-color);
+      color: var(--text-color);
+      border: 1px solid var(--divider-color);
+      @include table-body;
+      
+      @include from-mobile {
+        padding: 2.4rem;
+      }
+      
+      @include mobile {
+        padding: 1.6rem;
+      }
+      
+      &:first-child {
+        border-left: none;
+      }
+      
+      &:last-child {
+        border-right: none;
+      }
+    }
+    
+    tr:first-child th,
+    tr:first-child td {
+      border-top: none;
+    }
+    
+    tr:last-child th,
+    tr:last-child td {
+      border-bottom: none;
+    }
+  }
+
+  // Figures
+  figure {
+    @include from-mobile {
+      margin: 5.6rem 0;
+    }
+    
+    @include mobile {
+      margin: 4.8rem 0;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 3.2rem;
+      
+      @include from-mobile {
+        max-width: 90rem;
+      }
+      
+      @include mobile {
+        max-width: 35.1rem;
+      }
+    }
+    
+    figcaption {
+      font-family: var(--secondary-font);
+      color: var(--text-secondary-promo-color);
+      @include from-mobile {
+        margin-top: 1.6rem;
+      }
+      
+      @include mobile {
+        margin-top: 1.2rem;
+      }
+      font-weight: 500;
+      
+      @include mobile {
+        font-size: 1.0rem;
+        line-height: 1.2rem;
+      }
+      
+      @include from-mobile {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+      }
+    }
+  }
+
+  // Links
+  a {
+    color: var(--ultramarine-default-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // Inline elements
+  strong, b {
+    font-weight: 600;
+  }
+  
+  em, i {
+    font-style: italic;
+  }
+  
+  code {
+    font-family: var(--code-font, monospace);
+    background-color: var(--gray-color-2);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.3rem;
+    font-size: 0.9em;
+  }
+  
+  pre {
+    background-color: var(--gray-color-2);
+    padding: 1.2rem;
+    border-radius: 0.4rem;
+    overflow-x: auto;
+    margin-bottom: 1.6rem;
+    
+    code {
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+
+  // Blockquote
+  blockquote {
+    border-left: 4px solid var(--ultramarine-default-color);
+    padding-left: 1.6rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1.6rem;
+    font-style: italic;
+    color: var(--text-secondary-color);
+  }
+
+  // Horizontal rule
+  hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2.4rem 0;
+  }
+} 

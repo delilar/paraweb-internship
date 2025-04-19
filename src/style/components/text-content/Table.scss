@@ -1,7 +1,7 @@
 @use "@style/main.scss" as *;
 
 .table-container {
-    overflow: auto;
+    overflow-x: auto;
     max-width: 100%;
     
     @include from-mobile {
@@ -38,7 +38,8 @@
     border-collapse: separate;
     border-spacing: 0;
     font-family: var(--secondary-font);
-    table-layout: fixed;
+    table-layout: auto;
+    width: 100%;
     min-width: 100%;
 }
 
@@ -56,12 +57,10 @@
     @include table-heading;
     
     @include from-mobile {
-        width: var(--cell-width-desktop);
         height: var(--cell-height-desktop);
     }
 
     @include mobile {
-        width: var(--cell-width-mobile);
         height: var(--cell-height-mobile);
         padding: 1.6rem;
     }
@@ -88,12 +87,10 @@
     @include table-body;
     
     @include from-mobile {
-        width: var(--cell-width-desktop);
         height: var(--cell-height-desktop);
     }
 
     @include mobile {
-        width: var(--cell-width-mobile);
         height: var(--cell-height-mobile);
         padding: 1.6rem;
     }
