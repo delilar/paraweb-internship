@@ -1,0 +1,162 @@
+@use "@style/main.scss" as *;
+
+.text-field {
+  width: fit-content;
+  position: relative;
+  
+  &__container {
+    display: flex;
+    align-items: center;
+    background-color: var(--card-color);
+    color: var(--text-color);
+    font-family: var(--secondary-font);
+    border: 1px solid transparent;
+    border-radius: 1.2rem;
+    padding: 2.2rem 1.6rem;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    
+    @include from-mobile {
+      gap: 1.6rem;
+    }
+
+    @include mobile {
+      gap: 1.2rem;
+    }
+    
+    svg path {
+      stroke: var(--text-secondary-color);
+    }
+
+    @include hover {
+      border-color: var(--ultramarine-light-color-1);
+    }
+  }
+
+  &__input-container {
+    position: relative;
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-family: var(--secondary-font);
+    @extend .text-body-small-bold;
+    @include text-body-bold;
+    
+    &::placeholder {
+      color: transparent;
+    }
+    
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    pointer-events: none;
+    color: var(--text-secondary-color);
+    transition: transform 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+    @include text-body-bold;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__prefix-icon, &__end-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    svg {
+      width: 2rem;
+      height: 2rem;
+      
+      path {
+        stroke: currentColor;
+      }
+    }
+  }
+
+  &__end-icon {
+    cursor: pointer;
+  }
+  
+  &__prefix-icon svg, &__end-icon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &--with-prefix-icon {
+    .text-field__label {
+      left: 0;
+    }
+  }
+
+  &--with-end-icon {
+    .text-field__input-container {
+      padding-right: 0.8rem;
+    }
+  }
+
+  &--focused, &--filled {
+    .text-field__label {
+      top: -0.7rem;
+      transform: translateY(-1);
+      @include text-caption;
+    }
+  }
+  
+  &--focused {
+    .text-field__container {
+      border-color: var(--ultramarine-light-color-1);
+    }
+  }
+
+  &--disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+
+    .text-field__container {
+      background-color: var(--gray-color-1);
+      color: var(--text-blind-color);
+      border: 1px solid transparent;
+      
+      svg path {
+        stroke: var(--text-blind-color);
+      }
+    }
+    
+    .text-field__input {
+      color: var(--text-blind-color);
+    }
+    
+    .text-field__label {
+      color: var(--text-blind-color);
+    }
+  }
+
+  &--error {
+    .text-field__container {
+      background-color: var(--gray-color-1);
+      color: var(--suai-red-default-color);
+      border: 1px solid var(--suai-red-light-1-color);
+      
+      svg path {
+        stroke: var(--suai-red-default-color);
+      }
+    }
+    
+    .text-field__input {
+      color: var(--suai-red-default-color);
+    }
+    
+    .text-field__label {
+      color: var(--suai-red-default-color);
+    }
+  }
+} 

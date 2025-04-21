@@ -1,13 +1,11 @@
-export type Option = {
-  id: number;
-  label: string;
-  checked?: boolean;
-  link?: string;
-  socialType?: 'vk' | 'tg' | 'id' | 'whatsapp' | 'logo-guap-mono' | 'logo-guap-color';
-};
+import { Option } from '@components/Select/types';
 
 export interface DropdownProps {
-  title?: string;
-  optionsData: Option[];
-  onChange?: (selectedOption: Option | undefined, checkedOptions: Option[]) => void;
+  isOpen: boolean;
+  options: Option[];
+  onItemClick?: (option: Option) => void;
+  onCheckboxChange?: (id: number, checked: boolean) => void;
+  menuClassName?: string;
+  itemClassName?: string;
+  variant?: 'normal' | 'small';
 }

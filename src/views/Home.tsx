@@ -8,7 +8,7 @@ import LayoulistIcon from "@images/icons/layout-list.svg";
 import CalendarIcon from "@images/icons/calendar.svg";
 
 import { SwitcherItem } from "@/components/Switcher/types";
-import { Option } from "@/components/DropDown/types";
+import { CheckboxOption, SocialOption } from "@/components/Select/types";
 
 import PartnerCard from "../components/cards/PartnerCard";
 import Alert from "../components/Alert";
@@ -24,7 +24,6 @@ import ProductCard from "@/components/cards/ProductCard";
 import LevelCard from "@/components/cards/LevelCard";
 import EventCard from "@/components/cards/EventCard";
 import Link from "@/components/Link";
-import Dropdown from "@/components/DropDown";
 import DocumentCard from "@/components/cards/DocumentCard";
 import Tab from "@/components/Tab";
 import Tag from "@/components/Tag";
@@ -32,12 +31,12 @@ import Breadcrumbs from "@/components/menu/Breadcrumbs";
 import HeaderMenu from "@/components/menu/HeaderMenu";
 import Switcher from "@/components/Switcher";
 import Toggle from "@/components/Toggle";
-
+import Select from "@/components/Select";
+import TextField from "@/components/TextField";
 const Home: FC = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [currentView, setCurrentView] = useState<string>('layout-list');
-    const [ , setSelectedOptions] = useState<Option[]>([]);
 
     const switcherItems: SwitcherItem[] = [
         {
@@ -50,11 +49,20 @@ const Home: FC = () => {
         }
       ];
 
-    const handleDropdownChange = (selectedOption: Option | undefined, checkedOptions: Option[]) => {
-        console.log("Выбранная опция:", selectedOption);
-        console.log("Все выбранные опции:", checkedOptions);
-        setSelectedOptions(checkedOptions);
-      };
+      const checkboxOptions: CheckboxOption[] = [
+        { id: 1, label: 'Вариант-1', type: 'checkbox' },
+        { id: 2, label: 'Вариант-2', type: 'checkbox' },
+        { id: 3, label: 'Вариант-3', type: 'checkbox', checked: true },
+        { id: 4, label: 'Вариант-4', type: 'checkbox' },
+        { id: 5, label: 'Вариант-5', type: 'checkbox' }
+      ];
+      
+      const socialOptions: SocialOption[] = [
+        { id: 1, label: 'ВКонтакте', type: 'social', link: 'vk.com', socialType: 'vk' },
+        { id: 2, label: 'Телеграм', type: 'social', link: 't.me', socialType: 'tg' },
+        { id: 3, label: 'Лидер ID', type: 'social', link: 'leader-id.ru', socialType: 'id' },
+        { id: 4, label: 'WhatsApp', type: 'social', link: 'whatsapp.com', socialType: 'whatsapp' }
+      ];
 
     const handleViewChange = (selectedId: string) => {
         setCurrentView(selectedId);
@@ -97,13 +105,6 @@ const Home: FC = () => {
             <Link type="underlined">Text</Link>
             <Link type="social" socialType="tg">Text</Link>
             <Link type="icon">Link</Link>
-            <Dropdown optionsData={[
-                {id: 1, label: "Option 1"},
-                {id: 2, label: "Option 2"},
-                {id: 3, label: "Option 3"}
-                ]}
-                onChange={handleDropdownChange}
-                />
             <Tab count={100} label="Text" />
             <Tag type="primary" mainValue="Наука" color="green" />
             <Tag type="deletable" mainValue="Английский" secondaryValue="C1" color="gray" />
@@ -115,6 +116,15 @@ const Home: FC = () => {
                 onChange={handleViewChange}
             />
             <Toggle />
+            <Select variant="normal" options={socialOptions} />
+            <Select variant="small" options={checkboxOptions} />
+            <Select 
+              variant="normal" 
+              options={checkboxOptions} 
+              label="Выберите дату"
+              prefixIcon={<CalendarIcon />}
+            />
+            <TextField prefixIcon={<CalendarIcon />} type="password"/>
         </div>
     );
 }

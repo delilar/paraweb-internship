@@ -1,69 +1,58 @@
 @use "@style/main.scss" as *;
 
-.dropdown {
+.dropdown__menu-visible {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 1000 !important;
+}
+
+.dropdown__item {
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
   position: relative;
-  display: inline-block;
-  -webkit-tap-highlight-color: transparent;
-  width: max-content;
+  outline: none;
+  
+  @include hover {
+    background-color: var(--gray-color-2);
+  }
 
-  &__toggle {
-    background-color: var(--card-color);
+  @include active {
+    background-color: var(--gray-color-3);
+  }
+
+  &.normal {
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+  }
+}
+
+.dropdown__link {
+  width: 100%;
+  pointer-events: auto;
+  
+  @include active {
     color: var(--text-color);
-    font-family: var(--secondary-font);
-    border: none;
-    border-radius: 0.8rem;
+  }
+}
+
+.dropdown__checkbox {
+  flex-shrink: 0;
+  width: 100%;
+  
+  label {
     cursor: pointer;
-    padding: 0.8rem 1.2rem;
-    transition: background-color 0.3s ease;
-    @extend .text-body-small-bold;
-
-    @include from-mobile {
-      &:hover {
-        background-color: var(--gray-color-2);
-      }
-    }
   }
-
-  &__menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--card-color);
-    border: none;
-    box-shadow: 0 4px 8px #1F273314;
-    border-radius: 0.8rem;
-    margin-top: 5px;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-  }
-
-  &__item {
-    padding: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    border-radius: 0.8rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-
-    @include from-mobile {
-      &:hover {
-        background-color: var(--gray-color-2);
-      }
-    }
-  }
-
-  &__link {
-
-    &:active {
-        color: var(--text-color);
-    }
-  }
-
-  &__checkbox {
-    flex-shrink: 0;
+  
+  input[type="checkbox"] {
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
   }
 }

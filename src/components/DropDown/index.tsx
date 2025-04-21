@@ -1,5 +1,6 @@
-import { FC, useState, useEffect, useRef } from "react";
+import { FC } from "react";
 import { DropdownProps } from "./types";
+import classNames from "classnames";
 
 import "@style/components/DropDown/DropDown.scss";
 
@@ -7,77 +8,76 @@ import Link from "@components/Link";
 import Checkbox from "@components/selection/Checkbox";
 
 const Dropdown: FC<DropdownProps> = ({ 
-  title="Выбрать варианты", 
-  optionsData,
-  onChange 
+  isOpen, 
+  options,
+  onItemClick,
+  onCheckboxChange,
+  menuClassName = "dropdown__menu",
+  itemClassName = "dropdown__item",
+  variant = "normal"
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [options, setOptions] = useState(
-    optionsData.map(option => ({ ...option, checked: option.checked ?? false }))
-  );
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Обработчик клика вне компонента
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
+  const handleItemClick = (e: React.MouseEvent, option: any) => {
+    if ((e.target as HTMLElement).tagName === 'INPUT') return;
+    
+    if (
+      (e.target as HTMLElement).tagName === 'A' || 
+      (e.target as HTMLElement).closest('a')
+    ) {
+      if (option.type === 'social') {
+        onItemClick && onItemClick(option);
       }
-    };
-
-    // Добавляем обработчик при открытии дропдауна
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      return;
     }
-
-    // Очистка обработчика при размонтировании
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen]);
-
-  const toggleDropdown = () => setIsOpen(!isOpen);
-
-  const handleOptionChange = (id: number, checked: boolean) => {
-    const updatedOptions = options.map(option => 
-      option.id === id ? { ...option, checked } : option
-    );
     
-    setOptions(updatedOptions);
+    if ((e.target as HTMLElement).closest('label')) {
+      return;
+    }
     
-    // Передаем выбранные опции родителю
-    if (onChange) {
-      const selectedOption = updatedOptions.find(option => option.id === id);
-      onChange(selectedOption, updatedOptions.filter(option => option.checked));
+    if (option.type === 'checkbox') {
+      return;
+    } else if (option.type === 'social') {
+      onItemClick && onItemClick(option);
+      
+      if (option.link) {
+        const url = option.link.startsWith('http') ? option.link : `https://${option.link}`;
+        window.open(url, '_blank');
+      }
     }
   };
 
+  const menuClassNames = classNames(menuClassName, variant, "dropdown__menu-visible");
+  const itemClassNames = classNames(itemClassName, variant);
+
+  if (!isOpen) return null;
+
   return (
-    <div className="dropdown" ref={dropdownRef}>
-      <button className="dropdown__toggle" onClick={toggleDropdown}>
-        {title}
-      </button>
-      {isOpen && (
-        <div className="dropdown__menu">
-          {options.map((option) => (
-            <div key={option.id} className="dropdown__item">
-              {option.link ? (
-                <Link type="social" link={option.link} socialType={option.socialType} className="dropdown__link">
-                  {option.label}
-                </Link>
-              ) : (
-                <Checkbox
-                  label={option.label}
-                  disabled={false}
-                  checked={option.checked}
-                  className="dropdown__checkbox"
-                  onChange={(checked) => handleOptionChange(option.id, checked)}
-                />
-              )}
-            </div>
-          ))}
+    <div className={menuClassNames}>
+      {options.map((option) => (
+        <div 
+          key={option.id} 
+          className={itemClassNames}
+          onClick={(e) => handleItemClick(e, option)}
+        >
+          {option.type === 'social' ? (
+            <Link 
+              type="social" 
+              link={option.link} 
+              socialType={option.socialType} 
+              className="dropdown__link"
+            >
+              {option.label}
+            </Link>
+          ) : option.type === 'checkbox' ? (
+            <Checkbox
+              label={option.label}
+              disabled={false}
+              checked={option.checked}
+              className="dropdown__checkbox"
+              onChange={(checked) => onCheckboxChange && onCheckboxChange(option.id, checked)}
+            />
+          ) : null}
         </div>
-      )}
+      ))}
     </div>
   );
 };
