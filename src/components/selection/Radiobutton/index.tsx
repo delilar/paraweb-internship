@@ -9,7 +9,7 @@ const Radiobutton: FC<RadiobuttonProps> = ({
     disabled = false,
     onChange 
 }) => {
-    const generatedId = useId(); // Генерируем уникальный id с помощью хука useId
+    const generatedId = useId();
     const id = propId || `radio-${generatedId}${name ? `-${name}` : ""}${label ? `-${label}` : ""}`;
     const [isChecked, setIsChecked] = useState(false);
 

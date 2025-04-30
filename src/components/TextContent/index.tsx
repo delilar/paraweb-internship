@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useMemo } from "react";
 import classNames from "classnames";
 import DOMPurify from "dompurify";
 
@@ -10,19 +10,13 @@ interface TextContentProps {
 }
 
 const TextContent: FC<TextContentProps> = ({ html, className }) => {
-  useEffect(() => {
-    // Настраиваем DOMPurify для корректной работы с изображениями
-    DOMPurify.setConfig({
+  const sanitizedHtml = useMemo(() => {
+    return DOMPurify.sanitize(html, {
+      USE_PROFILES: { html: true },
       ADD_TAGS: ['img', 'figure', 'figcaption'],
       ADD_ATTR: ['src', 'alt', 'class']
     });
-  }, []);
-
-  const sanitizedHtml = DOMPurify.sanitize(html, {
-    USE_PROFILES: { html: true },
-    ADD_TAGS: ['img', 'figure', 'figcaption'],
-    ADD_ATTR: ['src', 'alt', 'class']
-  });
+  }, [html]);
   
   const textContentClassName = classNames("text-content", className);
 
@@ -34,4 +28,4 @@ const TextContent: FC<TextContentProps> = ({ html, className }) => {
   );
 };
 
-export default TextContent; 
+export default TextContent;

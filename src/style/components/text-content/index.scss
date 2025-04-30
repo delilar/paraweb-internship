@@ -1,14 +1,9 @@
 @use "@style/main.scss" as *;
 @use "./shared.scss" as *;
 
-// This file contains all text-content styles
-// The .text-content class is a wrapper that applies styles to HTML tags
-// All styling is done via tag selectors, not classes
 .text-content {
-  // Base styles are in shared.scss
   color: var(--text-color);
 
-  // Paragraphs
   p {
     margin-bottom: 1.6rem;
     line-height: 1.5;
@@ -22,7 +17,6 @@
     }
   }
 
-  // Headings
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--primary-font);
     font-weight: 600;
@@ -64,7 +58,6 @@
     }
   }
 
-  // Lists
   ul {
     list-style-type: none;
     padding-left: 0;
@@ -113,7 +106,6 @@
         }
       }
       
-      // Nested lists
       ul {
         margin-top: 1.6rem;
         margin-bottom: 0;
@@ -184,7 +176,6 @@
     }
   }
 
-  // Tables
   figure.table {
     overflow-x: auto;
     max-width: 100%;
@@ -288,7 +279,6 @@
     }
   }
 
-  // Figures
   figure {
     @include from-mobile {
       margin: 5.6rem 0;
@@ -337,7 +327,6 @@
     }
   }
 
-  // Links
   a {
     color: var(--ultramarine-default-color);
     text-decoration: none;
@@ -348,7 +337,6 @@
     }
   }
 
-  // Inline elements
   strong, b {
     font-weight: 600;
   }
@@ -379,7 +367,6 @@
     }
   }
 
-  // Blockquote
   blockquote {
     border-left: 4px solid var(--ultramarine-default-color);
     padding-left: 1.6rem;
@@ -390,7 +377,6 @@
     color: var(--text-secondary-color);
   }
 
-  // Horizontal rule
   hr {
     border: none;
     border-top: 1px solid var(--border-color);

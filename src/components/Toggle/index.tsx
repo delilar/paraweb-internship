@@ -12,7 +12,6 @@ const Toggle: FC<ToggleProps> = ({ checked = false, disabled = false, onChange }
             const newCheckedState = !isChecked;
             setIsChecked(newCheckedState);
             
-            // Вызываем переданный callback, если он существует
             if (onChange) {
                 onChange(newCheckedState);
             }
