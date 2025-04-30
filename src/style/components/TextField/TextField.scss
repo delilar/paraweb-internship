@@ -62,9 +62,9 @@
     pointer-events: none;
     color: var(--text-secondary-color);
     transition: transform 0.2s ease, font-size 0.2s ease, color 0.2s ease;
-    @include text-body-bold;
     top: 50%;
     transform: translateY(-50%);
+    @include text-body-bold;
   }
 
   &__prefix-icon, &__end-icon {

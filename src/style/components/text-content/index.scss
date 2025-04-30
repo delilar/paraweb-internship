@@ -4,63 +4,61 @@
 .text-content {
   color: var(--text-color);
 
-  p {
-    margin-bottom: 1.6rem;
-    line-height: 1.5;
+  p:not([class]) {
+    @include text-body;
     
     @include mobile {
-      font-size: 1.4rem;
+      margin-top: 1.6rem;
+      margin-bottom: 1.6rem;
     }
     
     @include from-mobile {
-      font-size: 1.6rem;
+      margin-top: 2.4rem;
+      margin-bottom: 2.4rem;
     }
   }
 
-  h1, h2, h3, h4, h5, h6 {
+   h2:not([class]), h3:not([class]) {
     font-family: var(--primary-font);
-    font-weight: 600;
-    margin-top: 2.4rem;
-    margin-bottom: 1.6rem;
-    line-height: 1.2;
     color: var(--heading-color, var(--text-color));
   }
   
-  h1 {
-    font-size: 2.8rem;
-    
-    @include from-mobile {
-      font-size: 3.2rem;
-    }
-  }
-  
-  h2 {
+  h2:not([class]) {
     font-size: 2.4rem;
+
+    @include text-h2;
     
+    @include mobile {
+      margin-top: 4.8rem;
+      margin-bottom: 3.2rem;
+    }
+
     @include from-mobile {
-      font-size: 2.8rem;
+      margin-top: 5.6rem;
+      margin-bottom: 4rem;
     }
   }
   
-  h3 {
+  h3:not([class]) {
     font-size: 2rem;
+
+    @include text-h3;
     
-    @include from-mobile {
-      font-size: 2.4rem;
+    @include mobile {
+      margin-top: 4rem;
+      margin-bottom: 2.4rem;
     }
-  }
-  
-  h4, h5, h6 {
-    font-size: 1.8rem;
-    
+
     @include from-mobile {
-      font-size: 2rem;
+      margin-top: 4.8rem;
+      margin-bottom: 3.2rem;
     }
   }
 
-  ul {
+  ul:not([class]) {
     list-style-type: none;
     padding-left: 0;
+    margin-top: 1.6rem;
     margin-bottom: 1.6rem;
     display: inline-flex;
     flex-direction: column;
@@ -73,7 +71,7 @@
       row-gap: 1.2rem;
     }
     
-    li {
+    li:not([class]) {
       margin-bottom: 0;
       line-height: 1.5;
       position: relative;
@@ -106,12 +104,12 @@
         }
       }
       
-      ul {
+      ul:not([class]) {
         margin-top: 1.6rem;
         margin-bottom: 0;
         padding-left: 0;
         
-        li {
+        li:not([class]) {
           padding-left: 2.1rem;
           position: relative;
           
@@ -130,10 +128,11 @@
     }
   }
 
-  ol {
+  ol:not([class]) {
     list-style-type: none;
     display: inline-flex;
     flex-direction: column;
+    margin-top: 1.6rem;
     margin-bottom: 1.6rem;
     counter-reset: numbered-list;
     
@@ -145,7 +144,7 @@
       row-gap: 1.2rem;
     }
     
-    li {
+    li:not([class]) {
       position: relative;
       counter-increment: numbered-list;
       padding-left: 3.7rem;
@@ -208,20 +207,21 @@
   
   table {
     width: 100%;
-    border-collapse: separate;
+    border-collapse: collapse;
     border-spacing: 0;
     font-family: var(--secondary-font);
     table-layout: auto;
-    min-width: 100%;
+    border-radius: 3.2rem;
+    overflow: hidden;
     
-    th, td {
+    th:not([class]), td:not([class]) {
       text-align: left;
       vertical-align: top;
       word-wrap: break-word;
       overflow: hidden;
     }
     
-    th {
+    th:not([class]) {
       color: var(--card-color);
       background-color: var(--ultramarine-light-color-1);
       border-right: 1px solid var(--ultramarine-dark-color);
@@ -245,7 +245,7 @@
       }
     }
     
-    td {
+    td:not([class]) {
       background-color: var(--card-color);
       color: var(--text-color);
       border: 1px solid var(--divider-color);
@@ -268,52 +268,43 @@
       }
     }
     
-    tr:first-child th,
-    tr:first-child td {
+    tr:first-child th:not([class]),
+    tr:first-child td:not([class]) {
       border-top: none;
     }
     
-    tr:last-child th,
-    tr:last-child td {
+    tr:last-child th:not([class]),
+    tr:last-child td:not([class]) {
       border-bottom: none;
     }
   }
 
-  figure {
-    @include from-mobile {
-      margin: 5.6rem 0;
-    }
+  figure:not([class]),
+  figure.image {
+    margin-top: 5.6rem;
+    margin-bottom: 5.6rem;
     
     @include mobile {
-      margin: 4.8rem 0;
+      margin-top: 4.8rem;
+      margin-bottom: 4.8rem;
     }
     
+    img:not([class]),
     img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
       display: block;
       border-radius: 3.2rem;
-      
-      @include from-mobile {
-        max-width: 90rem;
-      }
-      
-      @include mobile {
-        max-width: 35.1rem;
-      }
     }
     
-    figcaption {
+    figcaption:not([class]) {
       font-family: var(--secondary-font);
       color: var(--text-secondary-promo-color);
-      @include from-mobile {
-        margin-top: 1.6rem;
-      }
+      margin-top: 1.6rem;
       
       @include mobile {
         margin-top: 1.2rem;
       }
-      font-weight: 500;
       
       @include mobile {
         font-size: 1.0rem;
@@ -327,7 +318,7 @@
     }
   }
 
-  a {
+  a:not([class]) {
     color: var(--ultramarine-default-color);
     text-decoration: none;
     transition: color 0.2s ease;
@@ -337,15 +328,15 @@
     }
   }
 
-  strong, b {
+  strong:not([class]), b:not([class]) {
     font-weight: 600;
   }
   
-  em, i {
+  em:not([class]), i:not([class]) {
     font-style: italic;
   }
   
-  code {
+  code:not([class]) {
     font-family: var(--code-font, monospace);
     background-color: var(--gray-color-2);
     padding: 0.2rem 0.4rem;
@@ -353,33 +344,36 @@
     font-size: 0.9em;
   }
   
-  pre {
+  pre:not([class]) {
     background-color: var(--gray-color-2);
     padding: 1.2rem;
     border-radius: 0.4rem;
     overflow-x: auto;
+    margin-top: 1.6rem;
     margin-bottom: 1.6rem;
     
-    code {
+    code:not([class]) {
       background-color: transparent;
       padding: 0;
       border-radius: 0;
     }
   }
 
-  blockquote {
+  blockquote:not([class]) {
     border-left: 4px solid var(--ultramarine-default-color);
     padding-left: 1.6rem;
     margin-left: 0;
     margin-right: 0;
+    margin-top: 1.6rem;
     margin-bottom: 1.6rem;
     font-style: italic;
     color: var(--text-secondary-color);
   }
 
-  hr {
+  hr:not([class]) {
     border: none;
     border-top: 1px solid var(--border-color);
-    margin: 2.4rem 0;
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
   }
-} 
+}

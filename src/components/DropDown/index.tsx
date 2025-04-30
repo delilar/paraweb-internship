@@ -8,7 +8,6 @@ import Link from "@components/Link";
 import Checkbox from "@components/selection/Checkbox";
 
 const Dropdown: FC<DropdownProps> = ({ 
-  isOpen, 
   options,
   onItemClick,
   onCheckboxChange,
@@ -17,38 +16,22 @@ const Dropdown: FC<DropdownProps> = ({
   variant = "normal"
 }) => {
   const handleItemClick = (e: React.MouseEvent, option: any) => {
+    // Don't handle clicks on inputs (checkboxes)
     if ((e.target as HTMLElement).tagName === 'INPUT') return;
     
-    if (
-      (e.target as HTMLElement).tagName === 'A' || 
-      (e.target as HTMLElement).closest('a')
-    ) {
-      if (option.type === 'social') {
-        onItemClick && onItemClick(option);
-      }
-      return;
-    }
+    // Don't handle clicks on labels (checkboxes)
+    if ((e.target as HTMLElement).closest('label')) return;
     
-    if ((e.target as HTMLElement).closest('label')) {
-      return;
-    }
-    
+    // Handle based on option type
     if (option.type === 'checkbox') {
       return;
     } else if (option.type === 'social') {
       onItemClick && onItemClick(option);
-      
-      if (option.link) {
-        const url = option.link.startsWith('http') ? option.link : `https://${option.link}`;
-        window.open(url, '_blank');
-      }
     }
   };
 
   const menuClassNames = classNames(menuClassName, variant, "dropdown__menu-visible");
   const itemClassNames = classNames(itemClassName, variant);
-
-  if (!isOpen) return null;
 
   return (
     <div className={menuClassNames}>

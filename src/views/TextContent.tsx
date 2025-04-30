@@ -69,8 +69,10 @@ const TextContentView: FC = () => {
 
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
-      <TextContent html={demoContent}/>
+    <div style={{display: 'flex', flexDirection: 'column', maxWidth: '1200px', margin: '0 auto', padding: '0 20px'}}>
+      <TextContent 
+        html={demoContent}
+      />
     </div>
   );
 };

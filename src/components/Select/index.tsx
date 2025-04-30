@@ -5,6 +5,7 @@ import classNames from "classnames";
 import ChevronDownIcon from "@images/icons/chevron-down.svg";
 import "@style/components/Select/Select.scss";
 import Dropdown from "@components/DropDown";
+import { wordForm } from "@/utils/wordForm";
 
 const Select: FC<SelectProps> = ({
   variant,
@@ -24,23 +25,12 @@ const Select: FC<SelectProps> = ({
   const selectedCount = options.filter(opt => opt.type === 'checkbox' && opt.checked).length;
 
   const getSelectedLabel = (count: number) => {
-    const wordForm = (n: number, forms: [string, string, string]) => {
-      return forms[
-        n % 10 === 1 && n % 100 !== 11
-          ? 0
-          : [2, 3, 4].includes(n % 10) && ![12, 13, 14].includes(n % 100)
-          ? 1
-          : 2
-      ];
-    };
-  
     const selectedWord = wordForm(count, ["Выбран", "Выбрано", "Выбрано"]);
     const variantWord = wordForm(count, ["вариант", "варианта", "вариантов"]);
   
     return `${selectedWord} ${count} ${variantWord}`;
   };
   
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
@@ -70,9 +60,8 @@ const Select: FC<SelectProps> = ({
     setIsOpen(!isOpen)
   };
 
-  const handleOptionClick = (option: Option) => {
-    if (disabled) return;
-    if (processingRef.current) return;
+  const processOption = (option: Option, selectedOption?: Option) => {
+    if (disabled || processingRef.current) return;
     processingRef.current = true;
     
     setTimeout(() => {
@@ -81,7 +70,7 @@ const Select: FC<SelectProps> = ({
     
     if (onChange) {
       onChange(
-        option, 
+        selectedOption || option, 
         options.filter(
           opt => opt.type === 'checkbox' && opt.checked
         )
@@ -93,35 +82,24 @@ const Select: FC<SelectProps> = ({
     }
   };
 
+  const handleOptionClick = (option: Option) => {
+    processOption(option);
+  };
+
   const handleCheckboxChange = (id: number, checked: boolean) => {
     if (disabled) return;
-    if (processingRef.current) return;
-    processingRef.current = true;
-    
-    setTimeout(() => {
-      processingRef.current = false;
-    }, 50);
     
     const updatedOptions = options.map(option => {
-      if (option.id === id) {
-        if (option.type === 'checkbox') {
-          return { ...option, checked };
-        }
+      if (option.id === id && option.type === 'checkbox') {
+        return { ...option, checked };
       }
       return option;
     });
     
     setOptions(updatedOptions);
     
-    if (onChange) {
-      const selectedOption = updatedOptions.find(option => option.id === id);
-      onChange(
-        selectedOption, 
-        updatedOptions.filter(
-          option => option.type === 'checkbox' && option.checked
-        )
-      );
-    }
+    const selectedOption = updatedOptions.find(option => option.id === id);
+    processOption(selectedOption as Option, selectedOption);
   };
 
   const iconWithClass = isOpen ? "select__icon--open" : "select__icon";
@@ -145,18 +123,19 @@ const Select: FC<SelectProps> = ({
       </button>
       
       <div className="select__dropdown-wrapper">
-        <Dropdown 
-          isOpen={isOpen}
-          options={options}
-          onItemClick={handleOptionClick}
-          onCheckboxChange={handleCheckboxChange}
-          menuClassName="select__dropdown-menu"
-          itemClassName="dropdown__item"
-          variant={variant}
-        />
+        {isOpen && (
+          <Dropdown 
+            options={options}
+            onItemClick={handleOptionClick}
+            onCheckboxChange={handleCheckboxChange}
+            menuClassName="select__dropdown-menu"
+            itemClassName="dropdown__item"
+            variant={variant}
+          />
+        )}
       </div>
     </div>
   );
 };
 
-export default Select; 
+export default Select;

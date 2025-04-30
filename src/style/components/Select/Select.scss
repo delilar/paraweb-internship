@@ -1,8 +1,8 @@
 @use "@style/main.scss" as *;
 
 .select {
-  width: fit-content;
   position: relative;
+  width: fit-content;
   
   &__toggle {
     display: flex;
@@ -16,7 +16,7 @@
     cursor: pointer;
     transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
     @extend .text-body-small-bold;
-
+    min-width: 25rem;
     @include from-mobile {
       gap: 1.6rem;
     }
@@ -27,15 +27,19 @@
   }
 
   &__toggle-text {
+    text-align: left;
+    flex: 1;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: calc(100% - 4rem); /* Ensure space for icon */
   }
 
   &__prefix-icon {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     
     svg {
       width: 2rem;
@@ -50,6 +54,7 @@
   &__toggle-icon {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
   }
 
   &__icon {
