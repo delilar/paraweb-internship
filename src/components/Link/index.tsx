@@ -14,7 +14,15 @@ import SocialGuapColorIcon from "@images/social/logo-guap-color.svg"
 import LinkIcon from "@images/icons/link.svg"
 
 
-const Link: FC<LinkProps> = ({ type="icon", socialType="tg", size="normal", link="#", children, className }) => {
+const Link: FC<LinkProps> = ({ 
+    type="icon", 
+    socialType="tg", 
+    size="normal", 
+    link="#", 
+    children, 
+    className,
+    onClick 
+}) => {
 
     const linkClassName = classNames("link", {
         [`${type}`]: type,
@@ -54,23 +62,29 @@ const Link: FC<LinkProps> = ({ type="icon", socialType="tg", size="normal", link
 
     const socialIcon = getSocialType();
 
+    const handleClick = (e: React.MouseEvent) => {
+        if (onClick) {
+            onClick(e);
+        }
+    };
+
     switch (type) {
         case "icon":
             return (
-                <a className={linkClassName} target="_blank" href={`https://${link}`}>
+                <a className={linkClassName} target="_blank" href={`https://${link}`} onClick={handleClick}>
                     <LinkIcon />
                     <span className="link__text">{children}</span>
                 </a>
             )
         case "underlined":
             return (
-                <a className={linkClassName} target="_blank" href={`https://${link}`}>
+                <a className={linkClassName} target="_blank" href={`https://${link}`} onClick={handleClick}>
                     <span className="link__text">{children}</span>
                 </a>
             )
         case "social":
             return (
-                <a className={linkClassName} target="_blank" href={`https://${link}`}>
+                <a className={linkClassName} target="_blank" href={`https://${link}`} onClick={handleClick}>
                     {socialIcon}
                     <span className="link__text">{children}</span>
                 </a>

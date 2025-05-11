@@ -32,7 +32,10 @@
       "@public/*": ["public/*"],
       "@images/*": ["src/images/*"],
       "@components/*": ["src/components/*"],
-      "@views/*": ["src/views/*"]
+      "@views/*": ["src/views/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@layouts/*": ["src/layouts/*"]
     }
   },
   "include": ["src"]

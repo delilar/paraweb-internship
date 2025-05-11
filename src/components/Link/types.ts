@@ -7,4 +7,5 @@ export interface LinkProps {
     link?: string;
     children?: ReactNode;
     className?: string;
+    onClick?: (e: React.MouseEvent) => void;
 }

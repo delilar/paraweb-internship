@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { BreadcrumbsProps } from "./types";
-import "@style/components/menu/Breadcrumbs.scss";
+import "@style/components/header/Breadcrumbs.scss";
 
 const Breadcrumbs: FC<BreadcrumbsProps> = ({ links }) => {
     return (

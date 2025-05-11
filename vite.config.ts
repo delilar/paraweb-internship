@@ -14,6 +14,8 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
       '@views': path.resolve(__dirname, './src/views'),
       '@utils': path.resolve(__dirname, './src/utils'),
+      '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@layouts': path.resolve(__dirname, './src/layouts'),
     }
   },
   plugins: [

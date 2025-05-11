@@ -32,7 +32,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: calc(100% - 4rem); /* Ensure space for icon */
+    max-width: calc(100% - 4rem);
   }
 
   &__prefix-icon {

@@ -1,18 +1,23 @@
 .header-menu {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    border: solid 0.1rem var(--border-color);
-    border-radius: 3.2rem;
+    justify-content: space-between;
+    //border: solid 0.1rem var(--border-color);
+    //border-radius: 3.2rem;
     color: var(--border-color);
-    width: max-content;
     padding: 2.4rem 4rem;
+
+    &__user-info {
+        display: flex;
+        align-items: center;
+    }
 
     &__image-wrapper {
         width: 3.2rem;
         height: 3.2rem;
         outline: 0.1rem solid var(--border-color);
         outline-offset: 0.4rem;
-        border-radius: 50%;
+        border-radius: 0.8rem;
     }
 
     img {

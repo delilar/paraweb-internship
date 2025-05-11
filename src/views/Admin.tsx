@@ -1,10 +1,16 @@
 import { FC } from "react";
 
+import TextContent from "@/components/TextContent";
+
 const Admin: FC = () => {
+
     return (
-        <div>
-            <h1>Admin</h1>
-        </div>
+        <>
+            <TextContent html={`
+                    <h2>Заголовок страницы</h2>
+                    <p>Контент страницы</p>
+                `} />
+        </>
     );
 }
 

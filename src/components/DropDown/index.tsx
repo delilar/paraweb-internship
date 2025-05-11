@@ -15,21 +15,6 @@ const Dropdown: FC<DropdownProps> = ({
   itemClassName = "dropdown__item",
   variant = "normal"
 }) => {
-  const handleItemClick = (e: React.MouseEvent, option: any) => {
-    // Don't handle clicks on inputs (checkboxes)
-    if ((e.target as HTMLElement).tagName === 'INPUT') return;
-    
-    // Don't handle clicks on labels (checkboxes)
-    if ((e.target as HTMLElement).closest('label')) return;
-    
-    // Handle based on option type
-    if (option.type === 'checkbox') {
-      return;
-    } else if (option.type === 'social') {
-      onItemClick && onItemClick(option);
-    }
-  };
-
   const menuClassNames = classNames(menuClassName, variant, "dropdown__menu-visible");
   const itemClassNames = classNames(itemClassName, variant);
 
@@ -39,7 +24,6 @@ const Dropdown: FC<DropdownProps> = ({
         <div 
           key={option.id} 
           className={itemClassNames}
-          onClick={(e) => handleItemClick(e, option)}
         >
           {option.type === 'social' ? (
             <Link 
@@ -47,6 +31,7 @@ const Dropdown: FC<DropdownProps> = ({
               link={option.link} 
               socialType={option.socialType} 
               className="dropdown__link"
+              onClick={() => onItemClick?.(option)}
             >
               {option.label}
             </Link>

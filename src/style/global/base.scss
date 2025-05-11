@@ -51,8 +51,14 @@ $from-tablet: $tablet + 1px;
 
 
 @mixin active {
-  @media (hover: hover) {
+   @media (hover: hover) {
     &:hover:active {
+      @content;
+    }
+  }
+  
+  @media (hover: none) {
+    &:active {
       @content;
     }
   }
