@@ -11,7 +11,6 @@
     box-shadow: 0 0 6px #1F273314;
     border-radius: 2.4rem;
     padding: 2rem;
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 
     font-family: var(--secondary-font);
 
@@ -106,21 +105,26 @@
 .menu-dropdown-enter {
     opacity: 0;
     transform: translateY(-10px);
+    visibility: hidden;
+    transition: opacity 0s, transform 0s, visibility 0s;
 }
 
 .menu-dropdown-enter-active {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 300ms, transform 300ms;
+    visibility: visible;
+    transition: opacity 300ms, transform 300ms, visibility 300ms;
 }
 
 .menu-dropdown-exit {
     opacity: 1;
     transform: translateY(0);
+    visibility: visible;
 }
 
 .menu-dropdown-exit-active {
     opacity: 0;
     transform: translateY(-10px);
-    transition: opacity 300ms, transform 300ms;
+    visibility: hidden;
+    transition: opacity 300ms, transform 300ms, visibility 300ms;
 }

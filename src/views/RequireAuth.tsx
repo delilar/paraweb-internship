@@ -7,14 +7,18 @@ interface RequireAuthProps {
 }
 
 const RequireAuth: FC<RequireAuthProps> = ({ children }) => {
-  const { user } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
   const location = useLocation();
 
-  if (!user) {
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return children;
+  return <>{children}</>;
 }
 
 export default RequireAuth;

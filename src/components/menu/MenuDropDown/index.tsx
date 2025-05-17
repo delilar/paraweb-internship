@@ -1,33 +1,26 @@
-import MenuDropDownProps from "./types";
-import "@style/components/menu/MenuDropDown.scss";
-import { FC, useEffect } from "react";
-
-import RaitingIcon from "@images/icons/color-raiting.svg";
-import CoinIcon from "@images/coin-icon.svg";
-import DoorExitIcon from "@images/icons/door-exit.svg"
-
-import MenuButton from "@components/menu/MenuButton";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
-
+import { FC, useRef, useEffect } from "react";
 import classNames from "classnames";
 import { CSSTransition } from "react-transition-group";
+import RaitingIcon from "@images/icons/color-raiting.svg";
+import CoinIcon from "@images/coin-icon.svg";
+import DoorExitIcon from "@images/icons/door-exit.svg";
+import MenuButton from "@components/menu/MenuButton";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
+import MenuDropDownProps from "./types";
+import "@style/components/menu/MenuDropDown.scss";
 
 const MenuDropDown: FC<MenuDropDownProps> = ({
   isOpen,
   onClose,
   logo,
-  userImage,
-  userName,
-  userStatus,
-  raiting,
-  coins,
+  user,
   menuListItems,
-  website,
+  websiteUrl,
   profile,
   profileSettings,
   logout
 }) => {  
-
+  const nodeRef = useRef(null);
   const dropDownClassname = classNames("menu-dropdown", { "menu-dropdown--visible": isOpen });
 
   useEffect(() => {
@@ -46,52 +39,54 @@ const MenuDropDown: FC<MenuDropDownProps> = ({
     };
   }, [isOpen, onClose]);
   
-
   return (
     <CSSTransition
       in={isOpen}
       timeout={300}
       classNames="menu-dropdown"
       unmountOnExit
+      nodeRef={nodeRef}
     >
-      <section className={dropDownClassname}>
-          <header className="menu-dropdown__user-info-wrapper">
-              {userImage ? <img src={userImage} className="menu-dropdown__user-image" alt="User profile" /> : <ImagePlaceholder outerClassName="menu-dropdown__user-image" />}
-              <article className="menu-dropdown__user-info">
-                <h3 className="menu-dropdown__user-name">{userName}</h3>
-                <div className="menu-dropdown__user-stats">
-                  <p className="menu-dropdown__user-status">{userStatus}</p>
-                  <figure className="menu-dropdown__user-raiting-tag">
-                      <RaitingIcon />
-                      <span className="menu-dropdown__user-raiting">{raiting}</span>
-                  </figure>
-                  <figure className="menu-dropdown__user-coin-tag">
-                      <CoinIcon />
-                      <span className="menu-dropdown__user-coin">{coins}</span>
-                  </figure>
-                </div>
-              </article>
-          </header>
+      <section className={dropDownClassname} ref={nodeRef}>
+        <header className="menu-dropdown__user-info-wrapper">
+          {user.userImage ? 
+            <img src={user.userImage} className="menu-dropdown__user-image" alt="User profile" /> : 
+            <ImagePlaceholder outerClassName="menu-dropdown__user-image" />}
+          <article className="menu-dropdown__user-info">
+            <h3 className="menu-dropdown__user-name">{user.userName}</h3>
+            <div className="menu-dropdown__user-stats">
+              <p className="menu-dropdown__user-status">{user.userStatus}</p>
+              <figure className="menu-dropdown__user-raiting-tag">
+                <RaitingIcon />
+                <span className="menu-dropdown__user-raiting">{user.raiting}</span>
+              </figure>
+              <figure className="menu-dropdown__user-coin-tag">
+                <CoinIcon />
+                <span className="menu-dropdown__user-coin">{user.coins}</span>
+              </figure>
+            </div>
+          </article>
+        </header>
 
-          <nav className="menu__menu-list">
-              {menuListItems.map((item) => (
-                  <MenuButton 
-                    key={item.id} 
-                    {...item.menuButton}
-                  />
-              ))}
-          </nav>
+        <nav className="menu__menu-list">
+          {menuListItems.map((item) => (
+            <MenuButton 
+              key={item.id} 
+              {...item.menuButton}
+            />
+          ))}
+        </nav>
 
-          <nav className="menu-dropdown__links">
-              {profile && <a href={profile} className="menu-dropdown_profile-link">Профиль</a>}
-              {profileSettings && <a href={profileSettings} className="menu-dropdown_profile-settings-link">Настройки профиля</a>}
-              {website && (<a href={website} className="menu-dropdown__external-link">Сайт</a>)}
-          </nav>
+        <nav className="menu-dropdown__links">
+          {profile && <a href={profile} className="menu-dropdown_profile-link">Профиль</a>}
+          {profileSettings && <a href={profileSettings} className="menu-dropdown_profile-settings-link">Настройки профиля</a>}
+          {websiteUrl && (<a href={websiteUrl} className="menu-dropdown__external-link">Сайт</a>)}
+        </nav>
 
-          <footer className="menu-dropdown__logout">
-              <DoorExitIcon />
-              <a href={logout} className="menu-dropdown__logout-button">Выйти</a>
-          </footer>
+        <footer className="menu-dropdown__logout">
+          <DoorExitIcon />
+          <a href={logout} className="menu-dropdown__logout-button">Выйти</a>
+        </footer>
       </section>
     </CSSTransition>
   );

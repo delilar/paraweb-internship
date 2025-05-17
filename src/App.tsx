@@ -15,14 +15,18 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<PublicLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/text-content" element={<TextContent />} />
+        <Route path="/" element={<PublicLayout />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="text-content" element={<TextContent />} />
         </Route>
 
-        <Route element={/*<RequireAuth>*/<PrivateLayout />/*</RequireAuth>*/}>
-          <Route path="/admin" element={<Admin />} />
+        <Route path="/admin" element={
+          <RequireAuth>
+            <PrivateLayout />
+          </RequireAuth>
+        }>
+          <Route index element={<Admin />} />
         </Route>
 
         <Route path="*" element={<NotFound />}></Route>

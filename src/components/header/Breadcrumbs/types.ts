@@ -5,5 +5,5 @@ export interface BreadcrumbLink {
 }
 
 export interface BreadcrumbsProps {
-    links: BreadcrumbLink[];
+    links?: BreadcrumbLink[];
 }

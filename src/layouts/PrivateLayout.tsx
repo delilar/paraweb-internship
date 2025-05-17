@@ -1,36 +1,19 @@
-import { FC, useState } from "react";
-import { Outlet, Navigate } from "react-router";
+import { FC } from "react";
+import { Outlet } from "react-router";
 import { MenuListItem } from "@components/menu/Menu/types";
-import { BreadcrumbLink } from "@/components/header/Breadcrumbs/types";
 import { useMediaQuery } from "react-responsive";
+import { User } from "@/types/User";
 
 import Menu from "@components/menu/Menu";
 import HeaderMenu from "@/components/header/HeaderMenu";
+import Breadcrumbs from "@/components/header/Breadcrumbs";
 
 import "@style/layouts/PrivateLayout.scss";
 
 import LayoutIcon from "@images/icons/layout-grid.svg";
-import Breadcrumbs from "@/components/header/Breadcrumbs";
 
 const PrivateLayout: FC = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
     const isMobile = useMediaQuery({ maxWidth: 767 });
-
-    if (!isAuthenticated) {
-        return <Navigate to="/login" />;
-    }
-
-    const breadcrumbsData: BreadcrumbLink[] = [
-        {
-            label: "Первый пункт",
-            href: "https://www.google.com/"
-        }, 
-        {
-            label: "Второй пункт",
-            href: "https://www.google.com/",
-            disabled: true
-        }
-    ]
 
     const menuItems: MenuListItem[] = [
         {
@@ -67,7 +50,7 @@ const PrivateLayout: FC = () => {
         }
     ];
 
-    const userData = {
+    const userData: User = {
         userName: "Екатерина Константинопольская",
         userStatus: "Студент",
         raiting: 9999,
@@ -80,13 +63,13 @@ const PrivateLayout: FC = () => {
                 <>
                     <header className="private-layout__header">
                         <Menu
-                            {...userData}
+                            user={userData}
                             menuListItems={menuItems}
                             website="#"
                         />
                     </header>
                     <main className="private-layout__main">
-                        <Breadcrumbs links={breadcrumbsData} />
+                        <Breadcrumbs />
                         <Outlet />
                     </main>
                 </>
@@ -94,13 +77,13 @@ const PrivateLayout: FC = () => {
                 <>
                     <aside className="private-layout__sidebar">
                         <Menu
-                            {...userData}
+                            user={userData}
                             menuListItems={menuItems}
                             website="#"
                         />
                     </aside>
                     <main className="private-layout__main">
-                        <HeaderMenu links={breadcrumbsData} />
+                        <HeaderMenu />
                         <Outlet />
                     </main>
                 </>

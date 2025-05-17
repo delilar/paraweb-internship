@@ -68,23 +68,30 @@ const Link: FC<LinkProps> = ({
         }
     };
 
+    const getTarget = () => {
+        if (type === "social") {
+            return "_blank";
+        }
+        return undefined;
+    };
+
     switch (type) {
         case "icon":
             return (
-                <a className={linkClassName} target="_blank" href={`https://${link}`} onClick={handleClick}>
+                <a className={linkClassName} target={getTarget()} href={link} onClick={handleClick}>
                     <LinkIcon />
                     <span className="link__text">{children}</span>
                 </a>
             )
         case "underlined":
             return (
-                <a className={linkClassName} target="_blank" href={`https://${link}`} onClick={handleClick}>
+                <a className={linkClassName} target={getTarget()} href={link} onClick={handleClick}>
                     <span className="link__text">{children}</span>
                 </a>
             )
         case "social":
             return (
-                <a className={linkClassName} target="_blank" href={`https://${link}`} onClick={handleClick}>
+                <a className={linkClassName} target={getTarget()} href={link} onClick={handleClick}>
                     {socialIcon}
                     <span className="link__text">{children}</span>
                 </a>

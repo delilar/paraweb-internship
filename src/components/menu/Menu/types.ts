@@ -1,4 +1,5 @@
 import MenuButtonType from "@components/menu/MenuButton/types";
+import { User } from "@/types/User";
 
 interface Notification {
     id: number;
@@ -13,13 +14,9 @@ export interface MenuListItem {
 
 export interface BaseMenuProps {
     logo?: string;
-    userImage?: string;
-    userName: string;
-    userStatus: string;
-    raiting: number;
-    coins: number;
+    user: User;
     menuListItems: MenuListItem[];
-    website?: string;
+    websiteUrl?: string;
 }
 
 export default interface MenuProps extends BaseMenuProps {
