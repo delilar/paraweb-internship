@@ -1,4 +1,4 @@
-import { FC, useRef, useState, useEffect } from "react";
+import { FC, useRef, useState, useEffect, useCallback } from "react";
 import classNames from "classnames";
 import BellIcon from "@images/icons/bell.svg";
 import CompanyLogoIcon from "@images/company-placeholder-icon.svg";
@@ -23,13 +23,13 @@ const MenuMobile: FC<MenuMobileProps> = ({
     setIsDropdownOpen(false);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-    };
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      setIsDropdownOpen(false);
+    }
+  }, []);
 
+  useEffect(() => {
     if (isDropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
@@ -37,7 +37,7 @@ const MenuMobile: FC<MenuMobileProps> = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isDropdownOpen]);
+  }, [isDropdownOpen, handleClickOutside]);
 
   return (
     <header className="menu menu--mobile" ref={menuRef}>

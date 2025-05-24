@@ -106,14 +106,13 @@
     opacity: 0;
     transform: translateY(-10px);
     visibility: hidden;
-    transition: opacity 0s, transform 0s, visibility 0s;
 }
 
 .menu-dropdown-enter-active {
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
-    transition: opacity 300ms, transform 300ms, visibility 300ms;
+    transition: opacity 300ms, transform 300ms, visibility 0s;
 }
 
 .menu-dropdown-exit {
@@ -126,5 +125,5 @@
     opacity: 0;
     transform: translateY(-10px);
     visibility: hidden;
-    transition: opacity 300ms, transform 300ms, visibility 300ms;
+    transition: opacity 300ms, transform 300ms, visibility 0s 300ms;
 }

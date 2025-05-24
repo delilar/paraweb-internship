@@ -1,7 +1,6 @@
 export interface BreadcrumbLink {
     label: string;
-    href?: string;
-    disabled?: boolean;
+    href: string;
 }
 
 export interface BreadcrumbsProps {

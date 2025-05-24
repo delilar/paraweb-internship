@@ -1,7 +1,7 @@
 import { FC } from "react";
+import { Link } from "react-router";
 import { BreadcrumbsProps } from "./types";
 import useBreadcrumbs from "@hooks/useBreadcumbs";
-import Link from "@components/Link";
 import "@style/components/header/Breadcrumbs.scss";
 
 const Breadcrumbs: FC<BreadcrumbsProps> = ({ links: propLinks }) => {
@@ -12,20 +12,21 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({ links: propLinks }) => {
     return (
         <nav className="breadcrumbs" aria-label="breadcrumb">
             <ol className="breadcrumb">
-                {links.map((link, index) => (
-                    <li key={index} className={link.disabled ? "disabled" : ""}>
-                        {link.href && !link.disabled ? (
-                            <Link 
-                                type="underlined" 
-                                link={link.href}
-                            >
-                                {link.label}
-                            </Link>
-                        ) : (
-                            <span>{link.label}</span>
-                        )}
-                    </li>
-                ))}
+                {links.map((link, index) => {
+                    const isLastItem = index === links.length - 1;
+                    
+                    return (
+                        <li key={index} className={isLastItem ? "disabled" : ""}>
+                            {!isLastItem ? (
+                                <Link to={link.href}>
+                                    {link.label}
+                                </Link>
+                            ) : (
+                                <span>{link.label}</span>
+                            )}
+                        </li>
+                    );
+                })}
             </ol>
         </nav>
     );

@@ -33,18 +33,15 @@ export const useBreadcrumbs = (): BreadcrumbLink[] => {
     
     let currentPath = '';
     
-    pathSegments.forEach((segment, index) => {
+    pathSegments.forEach((segment) => {
       currentPath += `/${segment}`;
       
       const label = routeLabels[currentPath] || 
         segment.charAt(0).toUpperCase() + segment.slice(1);
       
-      const isLastSegment = index === pathSegments.length - 1;
-      
       breadcrumbs.push({
         label,
-        href: isLastSegment ? undefined : currentPath,
-        disabled: isLastSegment
+        href: currentPath,
       });
     });
 
