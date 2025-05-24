@@ -1,0 +1,164 @@
+@use "@style/main.scss" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--secondary-font);
+  transition: background-color 0.3s ease-in-out;
+  @extend .text-button;
+  width: fit-content;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+
+  svg path {
+    stroke-width: 1.5px;
+  }
+
+  &--filled {
+    background-color: var(--ultramarine-default-color);
+    border: none;
+    color: var(--text-contrast-color);
+    svg path {
+      stroke: var(--text-contrast-color);
+    }
+
+    @include from-mobile {
+      &:hover {
+        background-color: var(--ultramarine-dark-color);
+      }
+    }
+
+    &:active {
+      background-color: var(--ultramarine-light-color-1);
+    }
+
+    &:disabled {
+      background-color: var(--gray-color-2);
+    }
+  }
+
+  &--outlined {
+    background-color: transparent;
+    border: 0.1rem solid var(--ultramarine-light-color-1);
+    color: var(--ultramarine-default-color);
+
+    svg path {
+      stroke: var(--ultramarine-default-color);
+    }
+
+    @include from-mobile {
+      &:hover {
+        background-color: var(--gray-color-1);
+      }
+    }
+
+    &:active {
+      background-color: var(--gray-color-2);
+    }
+
+    &:disabled {
+      background-color: var(--gray-color-2);
+      border-color: var(--border-color);
+    }
+  }
+
+  &--text {
+    background-color: transparent;
+    border: none;
+    color: var(--ultramarine-default-color);
+
+    svg path {
+      stroke: var(--ultramarine-default-color);
+    }
+
+    @include from-mobile {
+      &:hover {
+        color: var(--ultramarine-dark-color);
+      }
+    }
+
+    &:active {
+      color: var(--ultramarine-light-color-1);
+    }
+  }
+
+  &--text-lower {
+    @extend .text-button-small;
+    background-color: transparent;
+    border: none;
+    color: var(--ultramarine-default-color);
+
+    svg path {
+      stroke: var(--ultramarine-default-color);
+    }
+
+    @include from-mobile {
+      &:hover {
+        color: var(--ultramarine-dark-color);
+      }
+    }
+
+    &:active {
+      color: var(--ultramarine-light-color-1);
+    }
+  }
+
+  &--on-contrast-background {
+    background-color: var(--card-color);
+    border: none;
+    color: var(--text-color);
+    svg path {
+      stroke: var(--ultramarine-default-color);
+    }
+
+    @include from-mobile {
+      &:hover {
+        background-color: var(--gray-color-1);
+      }
+    }
+
+    &:active {
+      background-color: var(--gray-color-2);
+    }
+
+    &:disabled {
+      color: rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.6);
+
+      svg path {
+        stroke: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+
+  &:disabled {
+    color: var(--text-blind-color);
+
+    svg path {
+      stroke: var(--text-blind-color);
+    }
+  }
+
+  @include from-mobile {
+    border-radius: 1.2rem;
+    padding: 1.3rem 1.6rem;
+    column-gap: 1.2rem;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  @include mobile {
+    border-radius: 1rem;
+    padding: 1.2rem;
+    column-gap: 0.8rem;
+
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+}

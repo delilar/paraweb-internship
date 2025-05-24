@@ -1,0 +1,65 @@
+html {
+  font-size: 62.5%;   
+  
+  @media screen and (max-width: 767px) {
+      font-size: calc(10px + 13 * (100vw - 375px) / 447);   
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+      font-size: calc(10px + 4 * (100vw - 768px) / 255);   
+  }
+  @media (min-width: 1024px) {
+      font-size: calc(8px + 2 * (100vw - 1024px) / (1440 - 1024));   
+  }
+}
+
+$tablet: 1023px;
+$mobile: 767px;
+$from-mobile: $mobile + 1px;
+$from-tablet: $tablet + 1px;
+
+@mixin tablet {
+@media (max-width: $tablet) {
+  @content;
+}
+}
+
+@mixin mobile {
+@media (max-width: $mobile) {
+  @content;
+}
+}
+
+@mixin from-tablet {
+@media (min-width: $from-tablet) {
+  @content;
+}
+}
+
+@mixin from-mobile {
+  @media (min-width: $from-mobile) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+
+@mixin active {
+   @media (hover: hover) {
+    &:hover:active {
+      @content;
+    }
+  }
+  
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+}

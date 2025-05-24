@@ -1,0 +1,254 @@
+@use "@style/main.scss" as *;
+
+.event-card {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    font-family: var(--secondary-font);
+    background-color: var(--card-color);
+    text-decoration: none;
+    width: fit-content;
+    -webkit-tap-highlight-color: transparent;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+    }
+
+    @include from-mobile {
+        border-radius: 3.2rem;
+        row-gap: 2rem;
+    }
+
+    @include mobile {
+        border-radius: 2.4rem;
+        row-gap: 1.6rem;
+    }
+
+    &__image-wrapper {
+        height: 20rem;
+        width: 100%;
+        position: relative;
+
+        @include from-mobile {
+            border-radius: 2.4rem;
+        }
+
+        @include mobile {
+            border-radius: 2rem;
+        }
+
+        .event-card__bookmark-button {
+            position: absolute;
+            top: 1.6rem;
+            right: 1.6rem;
+        }
+
+        .event-card__event-date {
+            position: absolute;
+            top: 1.6rem;
+            left: 1.6rem;
+        }
+    }
+
+    &__event-date {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--card-color);
+        border-radius: 1.2rem;
+
+        .event-card__day {
+            font-family: var(--main-font);
+            color: var(--ultramarine-default-color);
+            @extend .text-h2;
+        }
+
+        .event-card__month {
+            color: var(--text-secondary-color);
+            @extend .text-caption;
+        }
+
+        @include from-mobile {
+            padding: 0.8rem 7.5px;
+        }
+
+        @include mobile {
+            padding: 0.8rem 1rem;
+        }
+    }
+
+    &__main-info {
+        display: inline-flex;
+        flex-direction: column;
+
+        @include from-mobile {
+            row-gap: 3.2rem;
+            padding: 0 1.6rem 1.6rem 1.6rem;
+        }
+
+        @include mobile {
+            row-gap: 2.4rem;
+            padding: 0 1.2rem 1.2rem 1.2rem;
+        }
+    }
+
+    &__title-info {
+        display: inline-flex;
+        flex-direction: column;
+
+        @include from-mobile {
+            row-gap: 2rem;
+        }
+
+        @include mobile {
+            row-gap: 1.6rem;
+        }
+    }
+
+    &__title {
+        @extend .text-h4;
+        font-family: var(--main-font);
+        color: var(--text-color);
+
+        @include from-mobile {
+            &:hover {
+                transition: color 0.3s ease-in-out;;
+                color: var(--ultramarine-default-color);
+            }
+        }
+    }
+
+    &__tags-wrapper {
+        display: inline-flex;
+    }
+
+    &__tags-wrapper > * {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    &__tags-wrapper > *:first-child {
+        margin-right: 0.8rem;
+    }
+
+    &__tags-wrapper > *:nth-child(2) {
+        @include from-mobile {
+            margin-right: 5rem;
+        }
+
+        @include mobile {
+            margin-right: 8.6rem;
+        }
+    }
+
+    &__coin-tag {
+        background-color: #FFF0BC;
+        border-radius: 0.8rem;
+        padding: 5px 0.8rem;
+        column-gap: 0.4rem;
+        color: var(--text-color);
+        @extend .text-tag;
+
+        @include from-mobile {
+            svg {
+                width: 1.6rem;
+                height: 1.6rem;;
+            }
+        }
+
+        @include mobile {
+            svg {
+                width: 1.2rem;
+                height: 1.2rem;
+            }
+        }
+    }
+
+    &__alarm-tag {
+        color: var(--text-secondary-color);
+        @extend .text-caption;
+        column-gap: 0.4rem;
+
+        svg {
+            @include from-mobile {
+                width: 2rem;
+                height: 2rem;
+            }
+
+            @include mobile {
+                width: 1.6rem;
+                height: 1.6rem;
+            }
+
+            path {
+                stroke-width: 1.5px;
+                stroke: var(--text-secondary-color);
+            }
+        }
+
+        &--soon {
+            color: var(--suai-red-default-color);
+
+            svg path {
+                stroke: var(--suai-red-default-color);
+            }
+        }
+    }
+
+    &__event-info {
+        display: inline-flex;
+        border-top: solid 0.1rem var(--divider-color);
+
+        @include from-mobile {
+            padding-top: 2rem;
+            column-gap: 1.6rem;
+        }
+
+        @include mobile {
+            padding-top: 1.6rem;
+            column-gap: 1.2rem;
+        }
+    }
+
+    &__info-wrapper {
+        display: inline-flex;
+        flex-direction: column;
+        column-gap: 0.8rem;
+        
+        @include from-mobile {
+            row-gap: 1.6rem;
+        }
+
+        @include mobile {
+            row-gap: 1.2rem;
+        }
+    }
+
+    &__info-wrapper > * {
+        display: inline-flex;
+        align-items: center;
+        column-gap: 0.8rem;
+        color: var(--text-color);
+        @extend .text-body-small;
+
+        svg {
+            @include from-mobile {
+                width: 2rem;
+                height: 2rem;
+            }
+
+            @include mobile {
+                width: 1.6rem;
+                height: 1.6rem;
+            }
+
+            path {
+                stroke-width: 1.5px;
+                stroke: var(--ultramarine-default-color);
+            }
+        }
+    }
+}

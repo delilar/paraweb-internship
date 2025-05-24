@@ -1,0 +1,51 @@
+@use "@style/main.scss" as *;
+
+.breadcrumb {
+    display: inline-flex;
+    @extend .text-body-small;
+    font-family: var(--secondary-font);
+    align-items: center;
+    color: var(--text-color);
+    width: max-content;
+    -webkit-tap-highlight-color: transparent;
+
+    li {
+        display: flex;
+        align-items: center;
+
+        &:not(:first-child)::before {
+            content: "";
+            width: 0.4rem;
+            height: 0.4rem;
+            border-radius: 50%;
+            background-color: var(--text-secondary-color);
+            display: inline-block;
+        }
+
+        @include from-mobile {
+            &::before {
+                margin: 0 1.8rem;
+            }
+        }
+
+        @include mobile {
+            &::before {
+                margin: 0 12.5px;
+            }
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--text-color);
+
+        &:hover {
+            color: var(--ultramarine-default-color);
+        }
+    }
+
+    .disabled {
+        color: var(--text-secondary-color);
+        cursor: default;
+    }
+}

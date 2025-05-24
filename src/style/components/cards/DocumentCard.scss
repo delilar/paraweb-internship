@@ -1,0 +1,99 @@
+@use "@style/main.scss" as *;
+
+.document-card {
+    display: inline-flex;
+    flex-direction: column;
+    background-color: var(--card-color);
+    
+    
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    
+    @include from-mobile {
+        width: 74rem;
+        padding: 2.4rem;
+        border-radius: 3.2rem;
+        row-gap: 4rem;
+
+        svg {
+            width: 2rem;
+            height: 2rem;;
+        }
+    }
+
+    @include mobile {
+        width: 35rem;
+        padding: 2rem;
+        border-radius: 2.4rem;
+        row-gap: 3.2rem;
+
+        svg {
+            width: 1.6rem;
+            height: 1.6rem;;
+        }
+    }
+
+    &:hover {
+        transition: background-color 0.3s ease-in-out;
+        background-color: var(--ultramarine-default-color);
+
+        .document-card__title {
+            @extend .text-h4;
+            font-family: var(--main-font);
+            color: var(--ultramarine-light-color-2);
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .document-card__bottom-container {
+            color: var(--text-contrast-color);
+            transition: color 0.3s ease-in-out;
+        
+            svg path {
+                stroke: var(--text-contrast-color);
+                transition: stroke 0.3s ease-in-out;
+            }
+        }
+        
+        .document-card__doc-info {
+            color: var(--text-contrast-color);
+            transition: color 0.3s ease-in-out;
+        }
+        
+    }
+
+    &:not(:hover) {
+        background-color: var(--card-color);
+
+        color: var(--text-color);
+
+        .document-card__doc-info {
+            --text-2-color: #80889D;
+            color: var(--text-2-color);
+        }
+
+        .document-card__bottom-container {
+            svg path {
+                stroke: var(--text-color);
+            }
+        }
+    }
+
+    &__bottom-container {
+        display: flex;
+        justify-content: space-between;
+
+        svg path {
+            stroke-width: 1.5px;
+        }
+    }
+
+    &__title {
+        @extend .text-h4;
+        font-family: var(--main-font);
+    }
+
+    &__doc-info {
+        @extend .text-button-small;
+        font-family: var(--secondary-font);
+    }
+}

@@ -1,0 +1,16 @@
+.image-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--gray-color-4);
+    border-radius: inherit;
+
+    svg {
+        flex: 0 0 50%; 
+        width: 100%;
+        height: auto;
+    }
+    
+}

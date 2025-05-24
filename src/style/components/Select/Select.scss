@@ -1,0 +1,253 @@
+@use "@style/main.scss" as *;
+
+.select {
+  position: relative;
+  width: fit-content;
+  
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--card-color);
+    color: var(--text-color);
+    font-family: var(--secondary-font);
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    @extend .text-body-small-bold;
+    min-width: 25rem;
+    @include from-mobile {
+      gap: 1.6rem;
+    }
+
+    @include mobile {
+      gap: 1.2rem;
+    }
+  }
+
+  &__toggle-text {
+    text-align: left;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 4rem);
+  }
+
+  &__prefix-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    svg {
+      width: 2rem;
+      height: 2rem;
+      
+      path {
+        stroke: currentColor;
+      }
+    }
+  }
+
+  &__toggle-icon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__icon {
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon--open {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  &__dropdown-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  &__dropdown-menu {
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+    width: 100%;
+    background-color: var(--card-color);
+    border: none;
+    box-shadow: 0 4px 8px rgba(31, 39, 51, 0.08);
+    border-radius: 0.8rem;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    
+    &.normal {
+      border: 1px solid var(--divider-color);
+      border-radius: 1.6rem;
+      padding: 0.8rem;
+      max-height: 32rem;
+      overflow-y: auto;
+      
+      &::-webkit-scrollbar {
+        width: 0.8rem;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: var(--card-color);
+        border-radius: 0.4rem;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: var(--text-secondary-promo-color);
+        border-radius: 0.4rem;
+      }
+    }
+    
+    &.small {
+      padding: 0.8rem;
+      border: 1px solid var(--ultramarine-light-color-1);
+      border-radius: 1.2rem;
+    }
+  }
+  
+  &--normal {
+    .select__toggle {
+      background-color: var(--card-color);
+      color: var(--text-secondary-color);
+      border: 1px solid transparent;
+      border-radius: 1.2rem;
+      padding: 2.2rem 1.6rem;
+      @include text-body-bold;
+      
+      svg path {
+        stroke: var(--text-secondary-color);
+      }
+
+      @include hover {
+        border-color: var(--ultramarine-light-color-1);
+      }
+
+      @include from-mobile {
+
+      }
+
+      @include mobile {
+
+      }
+    }
+    
+    .select__toggle-icon svg {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+    
+    .select__prefix-icon svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  
+  &--small {
+    .select__toggle {
+      background-color: transparent;
+      color: var(--text-secondary-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1.2rem;
+      padding: 0.8rem 1.2rem;
+      @include text-body;
+      
+      svg path {
+        stroke: var(--text-secondary-color);
+      }
+    }
+    
+    .select__toggle-icon svg {
+      width: 2rem;
+      height: 2rem;
+    }
+    
+    .select__prefix-icon svg {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+
+    @include hover {
+      .select__toggle {
+        color: var(--ultramarine-default-color);
+        border: 1px solid var(--ultramarine-default-color);
+  
+        svg path {
+          stroke: var(--ultramarine-default-color);
+        }
+      }
+    }
+  }
+
+  &--disabled.select--normal {
+    pointer-events: none;
+    cursor: not-allowed;
+
+    .select__toggle {
+      background-color: var(--gray-color-1);
+      color: var(--text-blind-color);
+      border: 1px solid transparent;
+      border-radius: 1.2rem;
+      padding: 2.2rem 1.6rem;
+      @include text-body-bold;
+      
+      svg path {
+        stroke: var(--text-blind-color);
+      }
+    }
+  }
+
+  &--error.select--normal{
+    pointer-events: none;
+    cursor: not-allowed;
+
+    .select__toggle {
+      background-color: var(--gray-color-1);
+      color: var(--suai-red-default-color);
+      border: 1px solid var(--suai-red-light-1-color);
+      border-radius: 1.2rem;
+      padding: 2.2rem 1.6rem;
+      @include text-body-bold;
+      
+      svg path {
+        stroke: var(--suai-red-default-color);
+      }
+    }
+  }
+
+  &--open.select--normal {
+    .select__toggle {
+      transition: color 0.2s ease-in-out;
+      border-color: var(--ultramarine-light-color-1);
+      color: var(--text-color);
+    }
+  }
+
+  &--open.select--small {
+    .select__toggle {
+      color: var(--text-contrast-color);
+      background-color: var(--ultramarine-default-color);
+      border: 1px solid transparent;
+
+      svg path {
+        stroke: var(--text-contrast-color);
+      }
+    }
+  }
+}

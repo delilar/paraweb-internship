@@ -1,0 +1,101 @@
+@use "@style/main.scss" as *;
+
+.partner-card {
+    display: inline-flex;
+    flex-direction: column;
+    font-family: var(--secondary-font);
+    background-color: var(--card-color);
+    -webkit-tap-highlight-color: transparent;
+    width: fit-content;
+    text-decoration: none;
+
+    hr {
+        border: solid 0.5px var(--divider-color);
+    }
+
+    &__link {
+        @extend .text-body-small-bold;
+        color: var(--text-secondary-color);
+        text-decoration: none;
+
+        &:visited {
+            color: var(--text-secondary-color);
+        }
+    }
+
+    &__heading {
+        row-gap: 0.8rem;
+        padding-bottom: 0.4rem;
+    }
+
+    &__title {
+        @extend .text-h4;
+        font-family: var(--main-font);
+        color: var(--text-color);
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+            color: var(--ultramarine-default-color);
+        }
+    }
+
+    &__main {
+        display: inline-flex;
+        flex-direction: column;
+
+        &> * {
+            display: inline-flex;
+            flex-direction: column;
+            row-gap: 0.4rem;
+        }
+
+        .partner-card__contact-person {
+            max-width: 25.6rem;
+        }
+
+        small {
+            @extend .text-caption;
+            color: var(--text-secondary-color);
+        }
+
+        p, a {
+            @extend .text-body-small-bold;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+    }
+    
+    @include from-mobile {
+        row-gap: 2rem;
+        border-radius: 3.2rem;
+        padding: 2.4rem;
+
+        &__image {
+            width: 8rem;
+            height: 8rem;
+        }
+
+        &__main {
+            row-gap: 2rem;
+        }
+    }
+
+    @include mobile {
+        row-gap: 1.6rem;
+        border-radius: 2.4rem;
+        padding: 2rem;
+
+        &__image {
+            width: 6.4rem;
+            height: 6.4rem;
+        }
+
+        &__main {
+            row-gap: 1.2rem;
+        }
+    }
+
+    &__image {
+        border-radius: 1.2rem;
+    }
+}

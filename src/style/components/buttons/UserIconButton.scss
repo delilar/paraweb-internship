@@ -1,0 +1,63 @@
+@use "@style/main.scss" as *;
+
+.user-icon-button {
+  transition: border 0.3s ease-in-out;
+  border: solid var(--border-color) 0.1rem;
+  background-color: transparent;
+  padding: 0.4rem;
+  width: fit-content;
+  -webkit-tap-highlight-color: transparent;
+
+  .icon-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem;
+    background-color: var(--ultramarine-default-color);
+  }
+
+  svg {
+    path {
+      stroke-width: 1.5px;
+      stroke: var(--text-contrast-color);
+    }
+  }
+
+  @include from-mobile {
+    border-radius: 1.2rem;
+
+    .icon-wrapper {
+      border-radius: 0.8rem;
+    }
+
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    &:hover {
+      border-color: var(--ultramarine-default-color);
+    }
+
+    &:active {
+      border-color: var(--border-color);
+    }
+  }
+
+  @include mobile {
+    border-radius: 1rem;
+
+    .icon-wrapper {
+      border-radius: 0.6rem;
+    }
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &:active {
+      border-color: var(--ultramarine-default-color);
+    }
+  }
+}

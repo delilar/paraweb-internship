@@ -1,0 +1,167 @@
+@use "@style/global/base.scss" as media;
+
+@mixin text-h1 {
+  font-weight: 700;
+  font-size: 4.8rem;
+  line-height: 5.6rem;
+  
+  @include media.mobile {
+    font-size: 2.8rem;
+    line-height: 3.6rem;
+  }
+}
+
+@mixin text-h2 {
+  font-weight: 700;
+  font-size: 3.6rem;
+  line-height: 4.4rem;
+  
+  @include media.mobile {
+    font-size: 2.2rem;
+    line-height: 3.0rem;
+  }
+}
+
+@mixin text-h3 {
+  font-weight: 700;
+  font-size: 2.0rem;
+  line-height: 2.8rem;
+  
+  @include media.mobile {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+  }
+}
+
+@mixin text-h4 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  
+  @include media.mobile {
+    font-size: 1.4rem;
+    line-height: 2.0rem;
+  }
+}
+
+@mixin text-button {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  
+  @include media.mobile {
+    font-size: 1.4rem;
+    line-height: 2.0rem;
+  }
+}
+
+@mixin text-button-small {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 2.0rem;
+  
+  @include media.mobile {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}
+
+@mixin text-body {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  
+  @include media.mobile {
+    font-size: 1.4rem;
+    line-height: 2.0rem;
+  }
+}
+
+@mixin text-body-bold {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  
+  @include media.mobile {
+    font-size: 1.4rem;
+    line-height: 2.0rem;
+  }
+}
+
+@mixin text-body-small {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.0rem;
+  
+  @include media.mobile {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}
+
+@mixin text-body-small-bold {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 2.0rem;
+  
+  @include media.mobile {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}
+
+@mixin text-caption {
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  
+  @include media.mobile {
+    font-size: 1.0rem;
+    line-height: 1.2rem;
+  }
+}
+
+@mixin text-tag {
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  
+  @include media.mobile {
+    font-size: 1.0rem;
+    line-height: 1.4rem;
+  }
+}
+
+@mixin list-number {
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+
+  @include media.mobile {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+}
+
+@mixin table-heading {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+
+  @include media.mobile {
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}
+
+@mixin table-body {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2rem;
+
+  @include media.mobile {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}

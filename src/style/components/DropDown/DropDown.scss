@@ -1,0 +1,58 @@
+@use "@style/main.scss" as *;
+
+.dropdown__menu-visible {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 1000 !important;
+}
+
+.dropdown__item {
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  position: relative;
+  outline: none;
+  
+  @include hover {
+    background-color: var(--gray-color-2);
+  }
+
+  @include active {
+    background-color: var(--gray-color-3);
+  }
+
+  &.normal {
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+  }
+}
+
+.dropdown__link {
+  width: 100%;
+  pointer-events: auto;
+  
+  @include active {
+    color: var(--text-color);
+  }
+}
+
+.dropdown__checkbox {
+  flex-shrink: 0;
+  width: 100%;
+  
+  label {
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"] {
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
+  }
+}

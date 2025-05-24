@@ -1,0 +1,221 @@
+@use "@style/main.scss" as *;
+
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 1.2rem;
+  transition: background-color 0.3s ease-in-out;
+  width: fit-content;
+  -webkit-tap-highlight-color: transparent;
+
+  svg path {
+    stroke-width: 1.5px;
+    stroke: var(--text-secondary-color);
+    transition: stroke 0.3s ease-in-out, 
+                fill 0.3s ease-in-out, 
+                stroke-width 0.3s ease-in-out;
+  }
+
+  &--filled {
+    padding: 0.4rem;
+    background-color: var(--gray-color-2);
+    border-radius: 0.8rem;
+
+    @include from-mobile {
+      &:hover {
+        svg path {
+          stroke: var(--ultramarine-default-color);
+        }
+      }
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+    
+    @include mobile {
+      svg {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+    }
+
+    &:active {
+      svg path {
+        stroke: var(--ultramarine-default-color);
+      }
+    }
+
+    &:disabled {
+      background-color: var(--gray-color-2);
+
+      svg path {
+        stroke: var(--text-blind-color);
+      }
+    }
+  }
+
+  &--outlined {
+    padding: 0.4rem;
+    background-color: transparent;
+
+    @include from-mobile {
+      &:hover {
+        svg path {
+          stroke: var(--ultramarine-default-color);
+        }
+      }
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+    
+    @include mobile {
+      svg {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+    }
+
+    &:active {
+      svg path {
+        stroke: var(--ultramarine-default-color);
+      }
+    }
+
+    &:disabled {
+      svg path {
+        stroke: var(--text-blind-color);
+      }
+    }
+  }
+
+  &--hovered {
+    padding: 0.8rem;
+    background-color: transparent;
+    
+    @include from-mobile {
+      &:hover {
+        background-color: var(--gray-color-4);
+      }
+
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+    }
+    
+    @include mobile {
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &:active {
+      background-color: var(--gray-color-5);
+    }
+
+    &:disabled {
+      svg path {
+        stroke: var(--text-blind-color);
+      }
+    }
+  }
+
+  &--contrast-hovered {
+    padding: 0.8rem;
+    color: var(--text-contrast-color);
+    background-color: transparent;
+
+    svg path {
+      stroke: var(--text-contrast-color);
+    }
+
+    @include from-mobile {
+      &:hover {
+        background-color: var(--text-contrast-blind-color);
+      }
+
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+
+      &:active {
+        background-color: #FFFFFF99;
+      }
+    }    
+    
+    @include mobile {
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      &:active {
+        background-color: var(--text-contrast-blind-color);
+      }
+    }
+
+    &:disabled {
+      svg path {
+        stroke: var(--text-contrast-blind-color);
+      }
+    }
+  }
+
+  &--contrast-filled {
+    padding: 0.8rem;
+    color: var(--text-contrast-color);
+    background-color: #FFFFFF33;
+
+    svg path {
+      stroke: var(--text-contrast-color);
+    }
+
+    @include from-mobile {
+      &:hover {
+        background-color: var(--ultramarine-default-color);
+      }
+
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+    }
+    
+    @include mobile {
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &:active {
+      background-color: #FFFFFF33;
+
+      svg path {
+        fill: var(--text-contrast-color);
+      }
+    }
+
+    &:disabled {
+      display: none;
+    }
+  }
+
+  &--checked {
+    background-color: #FFFFFF33;
+
+    svg path {
+      fill: var(--text-contrast-color);
+    }
+  }
+}

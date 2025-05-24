@@ -1,0 +1,39 @@
+@use "@style/main.scss" as *;
+
+.private-layout {
+  min-height: 100vh;
+  background-color: var(--app-bg);
+
+  @include from-mobile {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    
+    &__sidebar {
+      z-index: 100;
+      
+    }
+    
+    &__main {
+      padding: 2.4rem 4rem;
+      overflow-y: auto;
+      
+    }
+  }
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    
+    &__header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    &__main {
+      padding: 2.4rem 1.2rem;
+      
+    }
+  }
+}

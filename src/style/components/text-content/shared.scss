@@ -1,0 +1,15 @@
+@use "@style/main.scss" as *;
+
+.text-content {
+    color: var(--text-color);
+    font-family: var(--secondary-font);
+    @include text-body;
+
+    @include mobile {
+        margin: 1.6rem 0;
+    }
+
+    @include from-mobile {
+        margin: 2.4rem 0;
+    }
+}

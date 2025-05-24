@@ -1,0 +1,67 @@
+@use "@style/main.scss" as *;
+
+.social-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  column-gap: 1.2rem;
+  transition: background-color 0.3s ease-in-out;
+  width: fit-content;
+  -webkit-tap-highlight-color: transparent;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+
+    path {
+      stroke-width: 1.5px;
+      fill: #80889D;
+    } 
+  }
+
+  &__icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+    background-color: #F1F4F9;
+
+    @include from-mobile {
+      border-radius: 1.2rem;
+    }
+
+    @include mobile {
+      border-radius: 0.8rem;
+    }
+  }
+
+  &__text {
+    font-family: var(--secondary-font);
+    @extend .text-button-small;
+    color: #80889D;
+  }
+
+  &:hover, &:active {
+    svg path {
+      transition: fill 0.2s ease-in-out;
+      fill: var(--text-contrast-color);
+    }
+
+    .social-button__icon {
+      transition: background-color 0.2s ease-in-out;
+      background-color: var(--ultramarine-default-color);
+    }
+  }
+
+  &:not(:hover), &:not(:active) {
+    svg path {
+      transition: fill 0.2s ease-in-out;
+    }
+
+    .social-button__icon {
+      transition: background-color 0.2s ease-in-out;
+    }
+  }
+}

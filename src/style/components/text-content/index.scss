@@ -1,0 +1,379 @@
+@use "@style/main.scss" as *;
+@use "./shared.scss" as *;
+
+.text-content {
+  color: var(--text-color);
+
+  p:not([class]) {
+    @include text-body;
+    
+    @include mobile {
+      margin-top: 1.6rem;
+      margin-bottom: 1.6rem;
+    }
+    
+    @include from-mobile {
+      margin-top: 2.4rem;
+      margin-bottom: 2.4rem;
+    }
+  }
+
+   h2:not([class]), h3:not([class]) {
+    font-family: var(--primary-font);
+    color: var(--heading-color, var(--text-color));
+  }
+  
+  h2:not([class]) {
+    font-size: 2.4rem;
+
+    @include text-h2;
+    
+    @include mobile {
+      margin-top: 4.8rem;
+      margin-bottom: 3.2rem;
+    }
+
+    @include from-mobile {
+      margin-top: 5.6rem;
+      margin-bottom: 4rem;
+    }
+  }
+  
+  h3:not([class]) {
+    font-size: 2rem;
+
+    @include text-h3;
+    
+    @include mobile {
+      margin-top: 4rem;
+      margin-bottom: 2.4rem;
+    }
+
+    @include from-mobile {
+      margin-top: 4.8rem;
+      margin-bottom: 3.2rem;
+    }
+  }
+
+  ul:not([class]) {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+    display: inline-flex;
+    flex-direction: column;
+    
+    @include from-mobile {
+      row-gap: 1.6rem;
+    }
+    
+    @include mobile {
+      row-gap: 1.2rem;
+    }
+    
+    li:not([class]) {
+      margin-bottom: 0;
+      line-height: 1.5;
+      position: relative;
+      padding-left: 3.7rem;
+      
+      @include mobile {
+        font-size: 1.4rem;
+      }
+      
+      @include from-mobile {
+        font-size: 1.6rem;
+      }
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0.9rem;
+        top: 1rem;
+        background-color: var(--ultramarine-default-color);
+        border-radius: 50%;
+        
+        @include mobile {
+          width: 0.6rem;
+          height: 0.6rem;
+        }
+        
+        @include from-mobile {
+          width: 5px;
+          height: 5px;
+        }
+      }
+      
+      ul:not([class]) {
+        margin-top: 1.6rem;
+        margin-bottom: 0;
+        padding-left: 0;
+        
+        li:not([class]) {
+          padding-left: 2.1rem;
+          position: relative;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            width: 14px;
+            height: 2px;
+            border-radius: 1rem;
+            background-color: var(--ultramarine-default-color);
+          }
+        }
+      }
+    }
+  }
+
+  ol:not([class]) {
+    list-style-type: none;
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+    counter-reset: numbered-list;
+    
+    @include from-mobile {
+      row-gap: 1.6rem;
+    }
+    
+    @include mobile {
+      row-gap: 1.2rem;
+    }
+    
+    li:not([class]) {
+      position: relative;
+      counter-increment: numbered-list;
+      padding-left: 3.7rem;
+      line-height: 1.5;
+      
+      @include mobile {
+        font-size: 1.4rem;
+      }
+      
+      @include from-mobile {
+        font-size: 1.6rem;
+      }
+      
+      &::before {
+        position: absolute;
+        top: -0.2rem;
+        left: 0;
+        content: counter(numbered-list) ".";
+        font-weight: 600;
+        font-size: 1.8rem;
+        line-height: 2.6rem;
+        
+        @include mobile {
+          font-size: 1.6rem;
+          line-height: 2.4rem;
+        }
+      }
+    }
+  }
+
+  figure.table {
+    overflow-x: auto;
+    max-width: 100%;
+    
+    @include from-mobile {
+      margin: 5.6rem 0;
+      border-radius: 3.2rem;
+    }
+    
+    @include mobile {
+      margin: 4.8rem 0;
+      border-radius: 2.4rem;
+    }
+    
+    &::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: var(--card-color);
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: var(--text-secondary-promo-color);
+      border-radius: 4px;
+    }
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: var(--secondary-font);
+    table-layout: auto;
+    border-radius: 3.2rem;
+    overflow: hidden;
+    
+    th:not([class]), td:not([class]) {
+      text-align: left;
+      vertical-align: top;
+      word-wrap: break-word;
+      overflow: hidden;
+    }
+    
+    th:not([class]) {
+      color: var(--card-color);
+      background-color: var(--ultramarine-light-color-1);
+      border-right: 1px solid var(--ultramarine-dark-color);
+      border-left: 1px solid var(--ultramarine-dark-color);
+      @include table-heading;
+      
+      @include from-mobile {
+        padding: 2.4rem;
+      }
+      
+      @include mobile {
+        padding: 1.6rem;
+      }
+      
+      &:first-child {
+        border-left: none;
+      }
+      
+      &:last-child {
+        border-right: none;
+      }
+    }
+    
+    td:not([class]) {
+      background-color: var(--card-color);
+      color: var(--text-color);
+      border: 1px solid var(--divider-color);
+      @include table-body;
+      
+      @include from-mobile {
+        padding: 2.4rem;
+      }
+      
+      @include mobile {
+        padding: 1.6rem;
+      }
+      
+      &:first-child {
+        border-left: none;
+      }
+      
+      &:last-child {
+        border-right: none;
+      }
+    }
+    
+    tr:first-child th:not([class]),
+    tr:first-child td:not([class]) {
+      border-top: none;
+    }
+    
+    tr:last-child th:not([class]),
+    tr:last-child td:not([class]) {
+      border-bottom: none;
+    }
+  }
+
+  figure:not([class]),
+  figure.image {
+    margin-top: 5.6rem;
+    margin-bottom: 5.6rem;
+    
+    @include mobile {
+      margin-top: 4.8rem;
+      margin-bottom: 4.8rem;
+    }
+    
+    img:not([class]),
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 3.2rem;
+    }
+    
+    figcaption:not([class]) {
+      font-family: var(--secondary-font);
+      color: var(--text-secondary-promo-color);
+      margin-top: 1.6rem;
+      
+      @include mobile {
+        margin-top: 1.2rem;
+      }
+      
+      @include mobile {
+        font-size: 1.0rem;
+        line-height: 1.2rem;
+      }
+      
+      @include from-mobile {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+      }
+    }
+  }
+
+  a:not([class]) {
+    color: var(--ultramarine-default-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  strong:not([class]), b:not([class]) {
+    font-weight: 600;
+  }
+  
+  em:not([class]), i:not([class]) {
+    font-style: italic;
+  }
+  
+  code:not([class]) {
+    font-family: var(--code-font, monospace);
+    background-color: var(--gray-color-2);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.3rem;
+    font-size: 0.9em;
+  }
+  
+  pre:not([class]) {
+    background-color: var(--gray-color-2);
+    padding: 1.2rem;
+    border-radius: 0.4rem;
+    overflow-x: auto;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+    
+    code:not([class]) {
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+
+  blockquote:not([class]) {
+    border-left: 4px solid var(--ultramarine-default-color);
+    padding-left: 1.6rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+    font-style: italic;
+    color: var(--text-secondary-color);
+  }
+
+  hr:not([class]) {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+  }
+}

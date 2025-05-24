@@ -1,0 +1,49 @@
+@use '@style/main.scss' as *;
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+label {
+    @extend .text-body-small;
+    font-family: var(--secondary-font);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    cursor: pointer;
+    width: max-content;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        border: 0.2rem solid var(--border-color);
+        background-color: white;
+        transition: background-color 0.3s, border-color 0.3s;
+        flex-shrink: 0;
+
+        &:hover {
+            border: 0.2rem solid var(--ultramarine-default-color);
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+}

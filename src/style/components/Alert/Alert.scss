@@ -1,0 +1,155 @@
+@use "@style/main.scss" as *;
+
+.alert {
+    display: inline-flex;
+    border-radius: 2.4rem;
+    background-color: var(--card-color);
+    font-family: var(--secondary-font);
+    width: max-content;
+    -webkit-tap-highlight-color: transparent;
+    position: fixed;
+    z-index: 9999;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
+    
+    &_position {
+        &_top-left {
+            top: 2rem;
+            left: 2rem;
+        }
+        
+        &_top-right {
+            top: 2rem;
+            right: 2rem;
+        }
+        
+        &_bottom-left {
+            bottom: 2rem;
+            left: 2rem;
+        }
+        
+        &_bottom-right {
+            bottom: 2rem;
+            right: 2rem;
+        }
+    }
+    
+    .alert__content {
+        display: inline-flex;
+        
+        @include from-mobile {
+            column-gap: 1.9rem;
+        }
+
+        @include mobile {
+            column-gap: 145px;
+        }
+    }
+    
+    .alert__icon {
+        &_error svg path {
+            stroke: var(--suai-red-default-color);
+        }
+
+        &_success svg path {
+            stroke: var(--electric-green-default-color);
+        }
+
+        @include from-mobile {
+            svg {
+                width: 2.4rem;
+                height: 2.4rem;
+            }
+
+            svg path {
+                width: 1.8rem;
+                height: 1.8rem;
+            } 
+        }
+
+        @include mobile {
+            svg {
+                width: 2rem;
+                height: 2rem;
+            }
+
+            svg path {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+
+    .alert__message {
+        row-gap: 1.8rem;
+
+        strong {
+            @extend .text-button-small;
+            color: var(--text-color);
+        }
+
+        p {
+            @extend .text-body-small;
+            color: var(--text-secondary-color);
+        }
+
+        @include from-mobile {
+            min-width: 30rem;
+        }
+
+        @include mobile {
+            min-width: 24rem;
+        }
+    }
+
+    .alert__close-button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        @include from-mobile {
+            width: 2.4rem;
+            height: 2.4rem;
+            row-gap: 3.2rem;
+        }
+
+        @include mobile {
+            width: 1.6rem;
+            height: 1.6rem;
+            row-gap: 2.4rem;
+        }
+
+        svg path {
+            stroke-width: 1.5px;
+            stroke: var(--text-secondary-color);
+
+            @include from-mobile {
+                width: 1rem;
+                height: 1rem;
+            }
+
+            @include mobile {
+                width: 0.8rem;
+                height: 0.8rem;
+            }
+        }
+    }
+
+    &_error {
+        border: solid 0.1rem var(--suai-red-default-color);
+    }
+
+    &_success {
+        border: solid 0.1rem var(--electric-green-default-color);
+    }
+
+    @include from-mobile {
+        padding: 2.4rem;
+    }
+
+    @include mobile {
+        padding: 2rem;
+    }
+}

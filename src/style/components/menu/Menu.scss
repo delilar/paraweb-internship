@@ -1,0 +1,159 @@
+@use "@style/main.scss" as *;
+
+.menu {
+    position: relative;
+    background-color: var(--card-color);
+    font-family: var(--secondary-font);
+    -webkit-tap-highlight-color: transparent;
+
+    &--desktop {
+        height: 100vh;
+        width: fit-content;
+
+        .menu__logo-wrapper {
+            svg {
+                height: 2.4rem;
+            }
+        }
+
+        .menu__user-info {
+            width: min-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .menu__user-image {
+                height: fit-content;
+                width: fit-content;
+                min-height: 12rem;
+                min-width: 12rem;
+                margin: 0 3.6rem 2rem 3.6rem;
+                border-radius: 2.4rem;
+            }
+
+            .menu__user-text-info {
+                display: flex;
+                flex-direction: column;
+                row-gap: 0.8rem;
+                margin-bottom: 1.6rem;
+
+                .menu__user-name {
+                    color: var(--text-color);
+                    text-align: center;
+                    @include text-body-small-bold
+                }
+
+                .menu__user-status {
+                    color: var(--text-secondary-color);
+                    text-align: center;
+                    @include text-body-small;
+                }
+            }
+
+            .menu__user-stats {
+                display: inline-flex;
+                align-items: center;
+                color: var(--text-secondary-color);
+                @include text-body-small;
+
+                & > *:first-child {
+                    padding-right: 0.8rem;
+                    border-right: var(--divider-color) 1px solid;
+                }
+
+                & > *:last-child {
+                    padding-left: 0.8rem;
+                }
+
+                & > * {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 0.8rem;
+
+                    svg {
+                        height: 2rem;
+                        width: 2rem;
+                    }
+                }
+            }
+        }
+
+        .menu__menu-list {
+
+            .menu__external-link {
+                display: flex;
+                align-items: center;
+                column-gap: 0.8rem;
+                margin-top: 4rem;
+                
+                text-decoration: none;
+                color: var(--ultramarine-default-color);
+                margin-left: 1.2rem;
+                @include text-body-bold;
+
+                svg {
+                    width: 2rem;
+                    height: 2rem;
+
+                    path {
+                        stroke: var(--ultramarine-default-color);
+                    }
+                }
+            }
+        }
+
+        & > *:not(:last-child) {
+            border-bottom: var(--divider-color) 1px solid;
+        }
+
+        & > * {
+            padding: 2.4rem;
+        }
+
+    }
+
+    &--mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: fit-content;
+        padding: 2.4rem 1.2rem;
+
+        .menu__logo-wrapper {
+            svg {
+                height: 2rem;
+            }
+        }
+
+        .menu__header-buttons-wrapper {
+            display: flex;
+            align-items: center;
+            column-gap: 1.2rem;
+
+            .menu__bell-icon {
+                background: transparent;
+                border: none;
+
+                svg {
+
+                    path {
+                        stroke: var(--text-secondary-color);
+                    }
+                }
+            }
+
+            .menu__image-wrapper {
+                background: transparent;
+                border: none;
+                border-radius: 0.6rem;
+
+                .menu__user-image {
+                    width: 2.8rem;
+                    height: 2.8rem;
+                    outline: var(--divider-color) 1px solid;
+                    outline-offset: 0.4rem;
+                }
+            }
+        }
+    }
+}

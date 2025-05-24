@@ -1,0 +1,115 @@
+@use "@style/main.scss" as *;
+
+.table-container {
+    overflow-x: auto;
+    max-width: 100%;
+    
+    @include from-mobile {
+        margin: 5.6rem 0;
+        border-radius: 3.2rem;
+        max-width: var(--container-width-desktop, 100%);
+        max-height: var(--container-height-desktop);
+    }
+
+    @include mobile {
+        margin: 4.8rem 0;
+        border-radius: 2.4rem;
+        max-width: var(--container-width-mobile, 100%);
+        max-height: var(--container-height-mobile);
+    }
+
+    &::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--card-color);
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--text-secondary-promo-color);
+        border-radius: 4px;
+    }
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: var(--secondary-font);
+    table-layout: auto;
+    width: 100%;
+    min-width: 100%;
+}
+
+.table th {
+    text-align: left;
+    vertical-align: top;
+    color: var(--card-color);
+    background-color: var(--ultramarine-light-color-1);
+    padding: 2.4rem;
+    word-wrap: break-word;
+    overflow: hidden;
+    border-right: 1px solid var(--ultramarine-dark-color);
+    border-left: 1px solid var(--ultramarine-dark-color);
+    
+    @include table-heading;
+    
+    @include from-mobile {
+        height: var(--cell-height-desktop);
+    }
+
+    @include mobile {
+        height: var(--cell-height-mobile);
+        padding: 1.6rem;
+    }
+}
+
+.table th:first-child {
+    border-left: none;
+}
+
+.table th:last-child {
+    border-right: none;
+}
+
+.table td {
+    text-align: left;
+    vertical-align: top;
+    color: var(--text-color);
+    background-color: var(--card-color);
+    padding: 2.4rem;
+    word-wrap: break-word;
+    overflow: hidden;
+    border: 1px solid var(--divider-color);
+    
+    @include table-body;
+    
+    @include from-mobile {
+        height: var(--cell-height-desktop);
+    }
+
+    @include mobile {
+        height: var(--cell-height-mobile);
+        padding: 1.6rem;
+    }
+}
+
+.table td:first-child {
+    border-left: none;
+}
+
+.table td:last-child {
+    border-right: none;
+}
+
+.table tr:first-child th,
+.table tr:first-child td {
+    border-top: none;
+}
+
+.table tr:last-child th,
+.table tr:last-child td {
+    border-bottom: none;
+}
