@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { useLocation } from 'react-router';
 import { BreadcrumbLink } from '@/components/header/Breadcrumbs/types';
 
-// Dictionary mapping routes to their display names
 const routeLabels: Record<string, string> = {
   '/': 'Главная',
   '/login': 'Логин',
